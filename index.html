@@ -67,7 +67,6 @@
             margin-bottom: 20px;
             border: 1px solid #ff2e63;
             position: relative;
-            background: #000;
         }
         .video-box video {
             width: 100%;
@@ -152,6 +151,9 @@
             color: #666;
             margin-top: 15px;
         }
+        .whatsapp-icon {
+            font-size: 24px;
+        }
         .notification {
             position: fixed;
             bottom: 20px;
@@ -177,14 +179,6 @@
             .price-new { font-size: 30px; }
             .btn-checkout { font-size: 17px; padding: 14px; }
         }
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.03); }
-            100% { transform: scale(1); }
-        }
     </style>
 </head>
 <body>
@@ -197,21 +191,19 @@
     <h1>🔥 O QUE NINGUÉM MOSTRA</h1>
     <p class="subtitle">💋 Ana Maria • Conteúdo exclusivo para maiores</p>
 
-    <!-- VÍDEO COM AUTOPLAY + SOM + LOOP -->
+    <!-- VÍDEO TEASER COM ÁUDIO ATIVO -->
     <div class="video-box">
-        <video id="mainVideo" autoplay loop playsinline preload="auto">
+        <video id="teaserVideo" controls preload="metadata" loop playsinline>
             <source src="https://files.catbox.moe/8g5tg5.mp4" type="video/mp4">
         </video>
     </div>
 
-    <!-- PROVA SOCIAL -->
     <div class="stats">
         <div><strong>+10K</strong> Homens VIP</div>
         <div><strong>🔥 4.9★</strong> Avaliação</div>
         <div><strong>🌍 12</strong> Países</div>
     </div>
 
-    <!-- PLANO VIP -->
     <div class="price-box">
         <span class="price-old">~~ 599 MZN ~~</span><br>
         <span class="price-new">249 MZN</span>
@@ -221,7 +213,6 @@
         <span>🔥 QUERO ACESSO VIP</span>
     </button>
 
-    <!-- PLANO PREMIUM (ELITE) -->
     <div style="margin-top: 10px;">
         <div style="font-size: 12px; color: #ffaa00;">⭐ MAIS POPULAR ⭐</div>
         <div class="price-box" style="background: rgba(255, 170, 0, 0.08); border: 1px solid #ffaa00;">
@@ -234,11 +225,14 @@
         </button>
     </div>
 
-    <!-- GARANTIA -->
     <div class="garantia-box">
         <p>🔒 <strong>Garantia de 7 dias</strong> — Se não gostar, devolvo o seu dinheiro.</p>
         <p style="font-size: 12px; margin-top: 5px;">Sem perguntas. Sem burocracia. É assim que eu trabalho.</p>
     </div>
+
+    <button style="background: linear-gradient(135deg, #25D366, #128C7E); color: #fff; border: none; padding: 14px; border-radius: 60px; font-weight: 700; font-size: 16px; width: 100%; cursor: pointer; margin: 10px 0;" onclick="window.location.href='https://wa.me/258846492104?text=QUERO%20VIP%20AGORA'">
+        <span class="whatsapp-icon">💬</span> FALAR COM A ANA MARIA
+    </button>
 
     <p style="font-size: 12px; color: #888; margin-top: 10px;">
         ⚡ Clique e fale diretamente comigo — acesso imediato
@@ -257,37 +251,33 @@
 </div>
 
 <script>
-    // ==================== AUTOPLAY + SOM ====================
-    const video = document.getElementById('mainVideo');
-
-    // Forçar volume máximo e som
-    video.volume = 1;
-    video.muted = false;
-
-    // Tentar reproduzir automaticamente com som
-    video.play().catch(() => {
-        // Se o autoplay com som for bloqueado, tenta novamente
-        video.muted = false;
-        setTimeout(() => {
-            video.play().catch(() => {});
-        }, 100);
+    // ==================== INICIALIZAÇÃO DO VÍDEO COM SOM ====================
+    document.addEventListener('DOMContentLoaded', function() {
+        const video = document.getElementById('teaserVideo');
+        if (video) {
+            // O vídeo vai tocar em loop com áudio ativo
+            video.muted = false; // Garante que o som está ativo
+            video.volume = 0.6; // Volume a 60% para não ser demasiado alto
+            video.play().catch(function(error) {
+                // Se o autoplay com som for bloqueado, o utilizador clica no vídeo para ativar
+                console.log("Autoplay com som bloqueado. Clique no vídeo para ativar.");
+            });
+        }
     });
 
-    // Manter o volume no máximo e som ligado
-    setInterval(() => {
-        if (video.volume < 1) {
-            video.volume = 1;
+    // ==================== SOM DA NOTIFICAÇÃO (usando o áudio do vídeo) ====================
+    function playNotificationSound() {
+        // Em vez de criar um som artificial, vamos "recarregar" o vídeo brevemente
+        // para dar a sensação de que o som está ligado à notificação
+        const video = document.getElementById('teaserVideo');
+        if (video) {
+            // Pequeno pico de volume para dar ênfase
+            video.volume = 0.9;
+            setTimeout(() => {
+                video.volume = 0.6;
+            }, 200);
         }
-        if (video.muted) {
-            video.muted = false;
-        }
-    }, 1000);
-
-    // Garantir loop
-    video.addEventListener('ended', function() {
-        this.currentTime = 0;
-        this.play();
-    });
+    }
 
     // ==================== CHECKOUT ====================
     function checkout(plano) {
@@ -320,22 +310,40 @@
         "💎 {nome} de {cidade} comprou o plano Premium agora mesmo!"
     ];
 
+    let ultimoNome = "";
+    let ultimaCidade = "";
+
     function notificacaoAleatoria() {
-        let nome = nomes[Math.floor(Math.random() * nomes.length)];
-        let cidade = cidades[Math.floor(Math.random() * cidades.length)];
-        let msg = mensagens[Math.floor(Math.random() * mensagens.length)];
+        let nome, cidade, msg;
+        let tentativas = 0;
+        
+        do {
+            nome = nomes[Math.floor(Math.random() * nomes.length)];
+            cidade = cidades[Math.floor(Math.random() * cidades.length)];
+            tentativas++;
+        } while ((nome === ultimoNome && cidade === ultimaCidade) && tentativas < 20);
+        
+        ultimoNome = nome;
+        ultimaCidade = cidade;
+        
+        msg = mensagens[Math.floor(Math.random() * mensagens.length)];
         msg = msg.replace("{nome}", nome).replace("{cidade}", cidade);
+
+        // Tocar som da notificação (aumenta volume do vídeo momentaneamente)
+        playNotificationSound();
 
         const notif = document.createElement('div');
         notif.className = 'notification';
         notif.innerHTML = msg;
         document.body.appendChild(notif);
-        setTimeout(() => notif.remove(), 4000);
+
+        setTimeout(() => {
+            notif.remove();
+        }, 4500);
     }
 
-    let tempo = 3000;
     function agendarProxima() {
-        tempo = Math.floor(Math.random() * (5000 - 3000 + 1)) + 3000;
+        const tempo = Math.floor(Math.random() * (5000 - 3000 + 1)) + 3000;
         setTimeout(() => {
             notificacaoAleatoria();
             agendarProxima();
