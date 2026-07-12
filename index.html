@@ -1,438 +1,560 @@
 <!DOCTYPE html>
-<html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>🔥 CLUBE VIP • Ana Maria 🌸</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            background: linear-gradient(145deg, #0a0a0a, #1a0a15);
-            font-family: 'Segoe UI', 'Poppins', Arial, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            color: #fff;
-        }
-        .container {
-            max-width: 520px;
-            width: 100%;
-            background: rgba(20, 10, 18, 0.96);
-            backdrop-filter: blur(16px);
-            border-radius: 40px;
-            padding: 30px 25px 35px;
-            border: 1px solid rgba(255, 46, 99, 0.4);
-            box-shadow: 0 20px 60px rgba(255, 46, 99, 0.15);
+<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style>
+          #pagtrust-header-alert {
+            font-size: 1.25rem;
             text-align: center;
-            position: relative;
-        }
-        .badge {
-            display: inline-block;
-            background: #ff2e63;
-            color: #fff;
-            font-size: 11px;
-            padding: 4px 14px;
-            border-radius: 40px;
-            letter-spacing: 1px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        .flag { font-size: 20px; margin-right: 6px; }
-        h1 {
-            font-size: 26px;
-            font-weight: 800;
-            color: #ff5f7e;
-            margin-bottom: 8px;
-        }
-        .subtitle {
-            font-size: 14px;
-            color: #ccaaae;
-            margin-bottom: 20px;
-            border-bottom: 1px solid rgba(255, 46, 99, 0.15);
-            padding-bottom: 15px;
-        }
-        .video-box {
-            width: 100%;
-            border-radius: 24px;
-            overflow: hidden;
-            margin-bottom: 20px;
-            border: 1px solid #ff2e63;
-        }
-        .video-box video {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        .stats {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin-bottom: 18px;
-        }
-        .stats div {
-            font-size: 13px;
-            color: #ff88aa;
-        }
-        .stats div strong {
-            display: block;
-            font-size: 20px;
-            color: #fff;
-        }
-        .price-box {
-            background: rgba(255, 46, 99, 0.08);
-            border-radius: 20px;
-            padding: 15px;
-            margin-bottom: 15px;
-        }
-        .price-old {
-            font-size: 18px;
-            color: #aa8898;
-            text-decoration: line-through;
-        }
-        .price-new {
-            font-size: 38px;
-            font-weight: 900;
-            color: #ff2e63;
-        }
-        .price-info {
-            font-size: 13px;
-            color: #ff88aa;
-            margin-top: 5px;
-        }
-        .btn-checkout {
-            background: linear-gradient(135deg, #ff5f7e, #ff2e63);
-            color: #fff;
-            border: none;
-            padding: 16px;
-            border-radius: 60px;
-            font-weight: 800;
-            font-size: 20px;
-            width: 100%;
-            cursor: pointer;
-            margin: 12px 0;
-            transition: 0.2s;
-            box-shadow: 0 8px 25px rgba(255, 46, 99, 0.3);
-        }
-        .btn-checkout:hover {
-            transform: scale(1.02);
-            box-shadow: 0 8px 30px rgba(255, 46, 99, 0.5);
-        }
-        .btn-premium {
-            background: linear-gradient(135deg, #ffaa00, #ff6600);
-            color: #000;
-            font-weight: 900;
-        }
-        .btn-premium:hover {
-            box-shadow: 0 8px 30px rgba(255, 102, 0, 0.5);
-        }
-        .garantia-box {
-            background: rgba(0, 200, 100, 0.05);
-            border: 1px solid rgba(0, 200, 100, 0.2);
-            border-radius: 16px;
-            padding: 12px;
-            margin: 15px 0;
-        }
-        .garantia-box p {
-            font-size: 13px;
-            color: #88ddaa;
-        }
-        .footer {
-            font-size: 11px;
-            color: #666;
-            margin-top: 15px;
-        }
-        .whatsapp-icon { font-size: 24px; }
-
-        /* NOTIFICAÇÃO */
-        .notification {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, #ff2e63, #ff5f7e);
-            padding: 12px 18px;
-            border-radius: 50px;
-            font-size: 13px;
-            font-weight: bold;
-            z-index: 1000;
-            animation: slideIn 0.5s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            max-width: 300px;
-        }
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        @media (max-width: 500px) {
-            .container { padding: 20px 15px; }
-            .stats { gap: 15px; }
-            .stats div strong { font-size: 16px; }
-            .price-new { font-size: 30px; }
-            .btn-checkout { font-size: 17px; padding: 14px; }
-        }
-
-        /* MODAL DE CHAMADA / BLOQUEIO */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.98);
-            z-index: 9999;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(8px);
-        }
-        .modal-overlay.active { display: flex; }
-        .modal-box {
-            background: #1a0d15;
-            max-width: 400px;
-            width: 90%;
-            border-radius: 32px;
-            padding: 30px 25px;
-            border: 2px solid #ff2e63;
-            text-align: center;
-        }
-        .modal-box .call-icon {
-            font-size: 60px;
-            margin-bottom: 15px;
-            animation: pulse 1.5s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-        .modal-box .loading-dots::after {
-            content: '';
-            animation: dots 1.5s infinite;
-        }
-        @keyframes dots {
-            0% { content: ''; }
-            33% { content: '.'; }
-            66% { content: '..'; }
-            100% { content: '...'; }
-        }
-        .modal-box h2 { color: #ff5f7e; font-size: 22px; margin-bottom: 10px; }
-        .modal-box p { color: #ccaaae; font-size: 14px; margin-bottom: 20px; line-height: 1.5; }
-        .modal-box .price-tag { font-size: 32px; font-weight: 900; color: #ff2e63; margin: 10px 0; }
-        .modal-box .btn-blocked {
-            background: linear-gradient(135deg, #ff2e63, #ff5f7e);
-            color: #fff;
-            border: none;
-            padding: 18px;
-            border-radius: 60px;
-            font-weight: 900;
-            font-size: 20px;
-            width: 100%;
-            cursor: pointer;
-            margin-top: 20px;
-            transition: 0.2s;
-            box-shadow: 0 0 40px rgba(255, 46, 99, 0.3);
-            animation: glow 2s infinite;
-        }
-        @keyframes glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(255, 46, 99, 0.3); }
-            50% { box-shadow: 0 0 50px rgba(255, 46, 99, 0.6); }
-        }
-        .modal-box .btn-blocked:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 60px rgba(255, 46, 99, 0.8);
-        }
-        .timer-text { font-size: 14px; color: #ff88aa; margin-top: 10px; }
-        .status-text { font-size: 16px; font-weight: bold; margin: 10px 0; }
-        .hot-text { color: #ff5f7e; font-size: 15px; margin: 10px 0; }
-        .blocked-title { color: #ff2e63; font-size: 28px; font-weight: 900; }
-    </style>
-</head>
-<body>
-
-<div class="container">
-    <div class="badge"><span class="flag">🌍</span> CRIADORA INTERNACIONAL • +18</div>
-    <h1>🔥 O QUE NINGUÉM MOSTRA</h1>
-    <p class="subtitle">💋 Ana Maria 🌸• Conteúdo exclusivo para maiores</p>
-
-    <div class="video-box">
-        <video id="teaserVideo" controls preload="metadata" loop playsinline>
-            <source src="https://files.catbox.moe/8g5tg5.mp4" type="video/mp4">
-        </video>
-    </div>
-
-    <div class="stats">
-        <div><strong>+10K</strong> Homens VIP</div>
-        <div><strong>🔥 4.9★</strong> Avaliação</div>
-        <div><strong>🌍 12</strong> Países</div>
-    </div>
-
-    <div class="price-box">
-        <span class="price-old">~~ 599 MZN ~~</span><br>
-        <span class="price-new">197 MZN</span>
-        <p class="price-info">💎 Acesso vitalício • +100 vídeos • Grupo secreto</p>
-    </div>
-    <button class="btn-checkout" onclick="checkout('249')"><span>🔥 QUERO ACESSO VIP</span></button>
-
-    <div style="margin-top: 10px;">
-        <div style="font-size: 12px; color: #ffaa00;">⭐ MAIS POPULAR ⭐</div>
-        <div class="price-box" style="background: rgba(255, 170, 0, 0.08); border: 1px solid #ffaa00;">
-            <span class="price-old">~~ 899 MZN ~~</span><br>
-            <span class="price-new" style="color: #ffaa00;">299 MZN</span>
-            <p class="price-info" style="color: #ffaa00;">👑 Vídeos ELITE + Chamadas ao vivo + Conteúdos proibidos</p>
-        </div>
-        <button class="btn-checkout btn-premium" onclick="checkout('489')"><span>⭐ TORNAR-ME ELITE</span></button>
-    </div>
-
-    <div class="garantia-box">
-        <p>🔒 <strong>Garantia de 7 dias</strong> — Se não gostar, devolvo o seu dinheiro.</p>
-        <p style="font-size: 12px; margin-top: 5px;">Sem perguntas. Sem burocracia. É assim que eu trabalho.</p>
-    </div>
-
-    <!-- BOTÃO FALAR COM ANA MARIA -->
-    <button style="background: linear-gradient(135deg, #25D366, #128C7E); color: #fff; border: none; padding: 14px; border-radius: 60px; font-weight: 700; font-size: 16px; width: 100%; cursor: pointer; margin: 10px 0;" onclick="abrirModal()">
-        <span class="whatsapp-icon">💬</span> FALAR COM A ANA MARIA 🌸
-    </button>
-
-    <p style="font-size: 12px; color: #888; margin-top: 10px;">
-        ⚡ Clique e fale diretamente comigo — acesso imediato
-    </p>
-
-    <div style="text-align: left; font-size: 13px; color: #ccaaae; background: rgba(255,255,255,0.03); border-radius: 16px; padding: 12px; margin-top: 15px;">
-        <p>📲 <strong>Como funciona:</strong></p>
-        <p>1️⃣ Escolhe o plano</p>
-        <p>2️⃣ Faz o pagamento</p>
-        <p>3️⃣ Recebes o PIN de acesso na hora</p>
-    </div>
-    <div class="footer">🔞 Conteúdo +18 • Proibido para menores • Fatura discreta</div>
-</div>
-
-<!-- MODAL DE CHAMADA / BLOQUEIO -->
-<div id="modalBloqueio" class="modal-overlay">
-    <div class="modal-box" id="modalContent">
-        <!-- ESTADO 1: A PROCESSAR CHAMADA -->
-        <div id="chamadaView">
-            <div class="call-icon">📞</div>
-            <h2>A CHAMAR ANA MARIA 🌸...</h2>
-            <p class="status-text" style="color: #ff88aa;">A ligar <span class="loading-dots"></span></p>
-            <div class="timer-text" id="timerContador">⏳ 30 segundos</div>
-            <p style="font-size: 12px; color: #666; margin-top: 10px;">Aguarde, estou a tentar contactá-la...</p>
-        </div>
-
-        <!-- ESTADO 2: NÚMERO BLOQUEADO (aparece após 30s) -->
-        <div id="bloqueadoView" style="display: none;">
-            <div class="call-icon">🔒</div>
-            <h2 style="color: #ff2e63;">NÚMERO BLOQUEADO</h2>
-            <p style="font-size: 16px; color: #ff88aa; margin: 10px 0;">
-                💋 <strong>Não é impossível</strong> — mas quem quer mesmo, paga para me ter.
-            </p>
-            <p class="hot-text">
-                🔥 Desbloqueia o número da Ana Maria🌸, ganha acesso aos <strong>vídeos mais quentes</strong> que vão deixar-te maluco… <br>
-                🍑 Chamadas ao vivo, fotos proibidas, conteúdo que <strong>nenhum outro site tem</strong>.
-            </p>
-            <div class="price-tag">197 MZN</div>
-            <p style="font-size: 13px; color: #ccaaae;">✅ Acesso vitalício • +100 vídeos </p>
-            <p style="font-size: 13px; color: #ff88aa; margin: 10px 0;">⚠️ Só hoje: preço promocional</p>
-            <button class="btn-blocked" onclick="checkout('249')">🔥 PAGAR 197 MZN E DESBLOQUEAR 🔥</button>
-        </div>
-    </div>
-</div>
-
-<script>
-    // ==================== CONTROLO DO MODAL ====================
-    let timerInterval = null;
-    let segundosRestantes = 30;
-
-    function abrirModal() {
-        const modal = document.getElementById('modalBloqueio');
-        const chamadaView = document.getElementById('chamadaView');
-        const bloqueadoView = document.getElementById('bloqueadoView');
-        
-        // Reset
-        segundosRestantes = 30;
-        chamadaView.style.display = 'block';
-        bloqueadoView.style.display = 'none';
-        document.getElementById('timerContador').innerHTML = '⏳ 30 segundos';
-        
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-
-        // Iniciar contagem regressiva
-        if (timerInterval) clearInterval(timerInterval);
-        timerInterval = setInterval(() => {
-            segundosRestantes--;
-            document.getElementById('timerContador').innerHTML = `⏳ ${segundosRestantes} segundos`;
-            
-            if (segundosRestantes <= 0) {
-                clearInterval(timerInterval);
-                chamadaView.style.display = 'none';
-                bloqueadoView.style.display = 'block';
-            }
-        }, 1000);
-    }
-
-    // ==================== CHECKOUT ====================
-    function checkout(plano) {
-        if (plano === '249') {
-            window.location.href = "https://klonepay.com/p/seus-melhores-conteudos-60ff84";
-        } else if (plano === '489') {
-            window.location.href = "https://klonepay.com/p/seus-conteudos-vip-da8fab";
-        }
-    }
-
-    // ==================== NOTIFICAÇÕES ====================
-    const nomes = [
-        "João Silva", "Carlos Mendes", "Mário Santos", "Nelson Costa", "Paulo Lima",
-        "Rui Pereira", "Miguel Fernandes", "André Rodrigues", "Bruno Alves", "Ricardo Gomes",
-        "Tiago Marques", "Hugo Oliveira", "Fábio Ribeiro", "Eduardo Castro", "Pedro Matos",
-        "Luís Cardoso", "José Machado", "António Neto", "Manuel Cruz", "Joaquim Torres",
-        "Fernando Reis", "Sérgio Leite", "Jorge Neves", "Victor Soares", "Gabriel Lopes"
-    ];
-
-    const cidades = [
-        "Maputo", "Beira", "Nampula", "Tete", "Matola", 
-        "Quelimane", "Inhambane", "Pemba", "Chimoio", "Xai-Xai"
-    ];
-
-    const mensagens = [
-        "🔥 {nome} de {cidade} acabou de comprar o VIP!",
-        "💋 {nome} de {cidade} tornou-se membro Elite!",
-        "⭐ {nome} de {cidade} entrou para o clube VIP!",
-        "🔥 {nome} de {cidade} acaba de desbloquear o acesso total!",
-        "💎 {nome} de {cidade} comprou o plano Premium agora mesmo!"
-    ];
-
-    let ultimoNome = "", ultimaCidade = "";
-
-    function notificacaoAleatoria() {
-        let nome, cidade, msg, tentativas = 0;
-        do {
-            nome = nomes[Math.floor(Math.random() * nomes.length)];
-            cidade = cidades[Math.floor(Math.random() * cidades.length)];
-            tentativas++;
-        } while ((nome === ultimoNome && cidade === ultimaCidade) && tentativas < 20);
-        ultimoNome = nome;
-        ultimaCidade = cidade;
-        msg = mensagens[Math.floor(Math.random() * mensagens.length)];
-        msg = msg.replace("{nome}", nome).replace("{cidade}", cidade);
-        const notif = document.createElement('div');
-        notif.className = 'notification';
-        notif.innerHTML = msg;
-        document.body.appendChild(notif);
-        setTimeout(() => notif.remove(), 4500);
-    }
-
-    function agendarProxima() {
-        const tempo = Math.floor(Math.random() * (5000 - 3000 + 1)) + 3000;
-        setTimeout(() => { notificacaoAleatoria(); agendarProxima(); }, tempo);
-    }
-
-    setTimeout(() => { notificacaoAleatoria(); agendarProxima(); }, 2000);
+            font-weight: 600;
+            background-color: rgb(239 68 68);
+            color: #ffffff;
+            padding: 1.25rem;
+          }
+      </style><script type="text/javascript" async="" src="./Grimório Proibido – V3 – Grimório Proibido_files/clientParamBuilder.bundle.js.baixados"></script><script src="./Grimório Proibido – V3 – Grimório Proibido_files/2261505654155972" async=""></script><script type="text/javascript" async="" src="./Grimório Proibido – V3 – Grimório Proibido_files/fbevents.js.baixados"></script><script type="text/javascript" async="" src="./Grimório Proibido – V3 – Grimório Proibido_files/gtm.js.baixados"></script><script type="text/javascript" async="" src="./Grimório Proibido – V3 – Grimório Proibido_files/js"></script><script type="text/javascript" async="" src="./Grimório Proibido – V3 – Grimório Proibido_files/array.js.baixados"></script><script async="" src="./Grimório Proibido – V3 – Grimório Proibido_files/bj5kvutkljw.js.baixados"></script><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>(()=>{class RocketLazyLoadScripts{constructor(){this.v="2.0.5",this.userEvents=["keydown","keyup","mousedown","mouseup","mousemove","mouseover","mouseout","touchmove","touchstart","touchend","touchcancel","wheel","click","dblclick","input"],this.attributeEvents=["onblur","onclick","oncontextmenu","ondblclick","onfocus","onmousedown","onmouseenter","onmouseleave","onmousemove","onmouseout","onmouseover","onmouseup","onmousewheel","onscroll","onsubmit"]}async t(){this.i(),this.o(),/iP(ad|hone)/.test(navigator.userAgent)&&this.h(),this.u(),this.l(this),this.m(),this.k(this),this.p(this),this._(),await Promise.all([this.R(),this.L()]),this.lastBreath=Date.now(),this.S(this),this.P(),this.D(),this.O(),this.M(),await this.C(this.delayedScripts.normal),await this.C(this.delayedScripts.defer),await this.C(this.delayedScripts.async),await this.T(),await this.F(),await this.j(),await this.A(),window.dispatchEvent(new Event("rocket-allScriptsLoaded")),this.everythingLoaded=!0,this.lastTouchEnd&&await new Promise(t=>setTimeout(t,500-Date.now()+this.lastTouchEnd)),this.I(),this.H(),this.U(),this.W()}i(){this.CSPIssue=sessionStorage.getItem("rocketCSPIssue"),document.addEventListener("securitypolicyviolation",t=>{this.CSPIssue||"script-src-elem"!==t.violatedDirective||"data"!==t.blockedURI||(this.CSPIssue=!0,sessionStorage.setItem("rocketCSPIssue",!0))},{isRocket:!0})}o(){window.addEventListener("pageshow",t=>{this.persisted=t.persisted,this.realWindowLoadedFired=!0},{isRocket:!0}),window.addEventListener("pagehide",()=>{this.onFirstUserAction=null},{isRocket:!0})}h(){let t;function e(e){t=e}window.addEventListener("touchstart",e,{isRocket:!0}),window.addEventListener("touchend",function i(o){o.changedTouches[0]&&t.changedTouches[0]&&Math.abs(o.changedTouches[0].pageX-t.changedTouches[0].pageX)<10&&Math.abs(o.changedTouches[0].pageY-t.changedTouches[0].pageY)<10&&o.timeStamp-t.timeStamp<200&&(window.removeEventListener("touchstart",e,{isRocket:!0}),window.removeEventListener("touchend",i,{isRocket:!0}),"INPUT"===o.target.tagName&&"text"===o.target.type||(o.target.dispatchEvent(new TouchEvent("touchend",{target:o.target,bubbles:!0})),o.target.dispatchEvent(new MouseEvent("mouseover",{target:o.target,bubbles:!0})),o.target.dispatchEvent(new PointerEvent("click",{target:o.target,bubbles:!0,cancelable:!0,detail:1,clientX:o.changedTouches[0].clientX,clientY:o.changedTouches[0].clientY})),event.preventDefault()))},{isRocket:!0})}q(t){this.userActionTriggered||("mousemove"!==t.type||this.firstMousemoveIgnored?"keyup"===t.type||"mouseover"===t.type||"mouseout"===t.type||(this.userActionTriggered=!0,this.onFirstUserAction&&this.onFirstUserAction()):this.firstMousemoveIgnored=!0),"click"===t.type&&t.preventDefault(),t.stopPropagation(),t.stopImmediatePropagation(),"touchstart"===this.lastEvent&&"touchend"===t.type&&(this.lastTouchEnd=Date.now()),"click"===t.type&&(this.lastTouchEnd=0),this.lastEvent=t.type,t.composedPath&&t.composedPath()[0].getRootNode()instanceof ShadowRoot&&(t.rocketTarget=t.composedPath()[0]),this.savedUserEvents.push(t)}u(){this.savedUserEvents=[],this.userEventHandler=this.q.bind(this),this.userEvents.forEach(t=>window.addEventListener(t,this.userEventHandler,{passive:!1,isRocket:!0})),document.addEventListener("visibilitychange",this.userEventHandler,{isRocket:!0})}U(){this.userEvents.forEach(t=>window.removeEventListener(t,this.userEventHandler,{passive:!1,isRocket:!0})),document.removeEventListener("visibilitychange",this.userEventHandler,{isRocket:!0}),this.savedUserEvents.forEach(t=>{(t.rocketTarget||t.target).dispatchEvent(new window[t.constructor.name](t.type,t))})}m(){const t="return false",e=Array.from(this.attributeEvents,t=>"data-rocket-"+t),i="["+this.attributeEvents.join("],[")+"]",o="[data-rocket-"+this.attributeEvents.join("],[data-rocket-")+"]",s=(e,i,o)=>{o&&o!==t&&(e.setAttribute("data-rocket-"+i,o),e["rocket"+i]=new Function("event",o),e.setAttribute(i,t))};new MutationObserver(t=>{for(const n of t)"attributes"===n.type&&(n.attributeName.startsWith("data-rocket-")||this.everythingLoaded?n.attributeName.startsWith("data-rocket-")&&this.everythingLoaded&&this.N(n.target,n.attributeName.substring(12)):s(n.target,n.attributeName,n.target.getAttribute(n.attributeName))),"childList"===n.type&&n.addedNodes.forEach(t=>{if(t.nodeType===Node.ELEMENT_NODE)if(this.everythingLoaded)for(const i of[t,...t.querySelectorAll(o)])for(const t of i.getAttributeNames())e.includes(t)&&this.N(i,t.substring(12));else for(const e of[t,...t.querySelectorAll(i)])for(const t of e.getAttributeNames())this.attributeEvents.includes(t)&&s(e,t,e.getAttribute(t))})}).observe(document,{subtree:!0,childList:!0,attributeFilter:[...this.attributeEvents,...e]})}I(){this.attributeEvents.forEach(t=>{document.querySelectorAll("[data-rocket-"+t+"]").forEach(e=>{this.N(e,t)})})}N(t,e){const i=t.getAttribute("data-rocket-"+e);i&&(t.setAttribute(e,i),t.removeAttribute("data-rocket-"+e))}k(t){Object.defineProperty(HTMLElement.prototype,"onclick",{get(){return this.rocketonclick||null},set(e){this.rocketonclick=e,this.setAttribute(t.everythingLoaded?"onclick":"data-rocket-onclick","this.rocketonclick(event)")}})}S(t){function e(e,i){let o=e[i];e[i]=null,Object.defineProperty(e,i,{get:()=>o,set(s){t.everythingLoaded?o=s:e["rocket"+i]=o=s}})}e(document,"onreadystatechange"),e(window,"onload"),e(window,"onpageshow");try{Object.defineProperty(document,"readyState",{get:()=>t.rocketReadyState,set(e){t.rocketReadyState=e},configurable:!0}),document.readyState="loading"}catch(t){console.log("WPRocket DJE readyState conflict, bypassing")}}l(t){this.originalAddEventListener=EventTarget.prototype.addEventListener,this.originalRemoveEventListener=EventTarget.prototype.removeEventListener,this.savedEventListeners=[],EventTarget.prototype.addEventListener=function(e,i,o){o&&o.isRocket||!t.B(e,this)&&!t.userEvents.includes(e)||t.B(e,this)&&!t.userActionTriggered||e.startsWith("rocket-")||t.everythingLoaded?t.originalAddEventListener.call(this,e,i,o):(t.savedEventListeners.push({target:this,remove:!1,type:e,func:i,options:o}),"mouseenter"!==e&&"mouseleave"!==e||t.originalAddEventListener.call(this,e,t.savedUserEvents.push,o))},EventTarget.prototype.removeEventListener=function(e,i,o){o&&o.isRocket||!t.B(e,this)&&!t.userEvents.includes(e)||t.B(e,this)&&!t.userActionTriggered||e.startsWith("rocket-")||t.everythingLoaded?t.originalRemoveEventListener.call(this,e,i,o):t.savedEventListeners.push({target:this,remove:!0,type:e,func:i,options:o})}}J(t,e){this.savedEventListeners=this.savedEventListeners.filter(i=>{let o=i.type,s=i.target||window;return e!==o||t!==s||(this.B(o,s)&&(i.type="rocket-"+o),this.$(i),!1)})}H(){EventTarget.prototype.addEventListener=this.originalAddEventListener,EventTarget.prototype.removeEventListener=this.originalRemoveEventListener,this.savedEventListeners.forEach(t=>this.$(t))}$(t){t.remove?this.originalRemoveEventListener.call(t.target,t.type,t.func,t.options):this.originalAddEventListener.call(t.target,t.type,t.func,t.options)}p(t){let e;function i(e){return t.everythingLoaded?e:e.split(" ").map(t=>"load"===t||t.startsWith("load.")?"rocket-jquery-load":t).join(" ")}function o(o){function s(e){const s=o.fn[e];o.fn[e]=o.fn.init.prototype[e]=function(){return this[0]===window&&t.userActionTriggered&&("string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=i(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach(t=>{const e=arguments[0][t];delete arguments[0][t],arguments[0][i(t)]=e})),s.apply(this,arguments),this}}if(o&&o.fn&&!t.allJQueries.includes(o)){const e={DOMContentLoaded:[],"rocket-DOMContentLoaded":[]};for(const t in e)document.addEventListener(t,()=>{e[t].forEach(t=>t())},{isRocket:!0});o.fn.ready=o.fn.init.prototype.ready=function(i){function s(){parseInt(o.fn.jquery)>2?setTimeout(()=>i.bind(document)(o)):i.bind(document)(o)}return"function"==typeof i&&(t.realDomReadyFired?!t.userActionTriggered||t.fauxDomReadyFired?s():e["rocket-DOMContentLoaded"].push(s):e.DOMContentLoaded.push(s)),this},s("on"),s("one"),s("off"),t.allJQueries.push(o)}e=o}t.allJQueries=[],o(window.jQuery),Object.defineProperty(window,"jQuery",{get:()=>e,set(t){o(t)}})}P(){const t=new Map;document.write=document.writeln=function(e){const i=document.currentScript,o=document.createRange(),s=i.parentElement;let n=t.get(i);void 0===n&&(n=i.nextSibling,t.set(i,n));const c=document.createDocumentFragment();o.setStart(c,0),c.appendChild(o.createContextualFragment(e)),s.insertBefore(c,n)}}async R(){return new Promise(t=>{this.userActionTriggered?t():this.onFirstUserAction=t})}async L(){return new Promise(t=>{document.addEventListener("DOMContentLoaded",()=>{this.realDomReadyFired=!0,t()},{isRocket:!0})})}async j(){return this.realWindowLoadedFired?Promise.resolve():new Promise(t=>{window.addEventListener("load",t,{isRocket:!0})})}M(){this.pendingScripts=[];this.scriptsMutationObserver=new MutationObserver(t=>{for(const e of t)e.addedNodes.forEach(t=>{"SCRIPT"!==t.tagName||!t.src||t.noModule||t.isWPRocket||this.pendingScripts.push({script:t,promise:new Promise(e=>{const i=()=>{const i=this.pendingScripts.findIndex(e=>e.script===t);i>=0&&this.pendingScripts.splice(i,1),e()};t.addEventListener("load",i,{isRocket:!0}),t.addEventListener("error",i,{isRocket:!0}),setTimeout(i,1e3)})})})}),this.scriptsMutationObserver.observe(document,{childList:!0,subtree:!0})}async F(){await this.X(),this.pendingScripts.length?(await this.pendingScripts[0].promise,await this.F()):this.scriptsMutationObserver.disconnect()}D(){this.delayedScripts={normal:[],async:[],defer:[]},document.querySelectorAll("script[type$=rocketlazyloadscript]").forEach(t=>{t.hasAttribute("data-rocket-src")?t.hasAttribute("async")&&!1!==t.async?this.delayedScripts.async.push(t):t.hasAttribute("defer")&&!1!==t.defer||"module"===t.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(t):this.delayedScripts.normal.push(t):this.delayedScripts.normal.push(t)})}async _(){await this.L();let t=[];document.querySelectorAll("script[type$=rocketlazyloadscript][data-rocket-src]").forEach(e=>{let i=e.getAttribute("data-rocket-src");if(i&&!i.startsWith("data:")){i.startsWith("//")&&(i=location.protocol+i);try{const o=new URL(i).origin;o!==location.origin&&t.push({src:o,crossOrigin:e.crossOrigin||"module"===e.getAttribute("data-rocket-type")})}catch(t){}}}),t=[...new Map(t.map(t=>[JSON.stringify(t),t])).values()],this.Y(t,"preconnect")}async G(t){if(await this.K(),!0!==t.noModule||!("noModule"in HTMLScriptElement.prototype))return new Promise(e=>{let i;function o(){(i||t).setAttribute("data-rocket-status","executed"),e()}try{if(navigator.userAgent.includes("Firefox/")||""===navigator.vendor||this.CSPIssue)i=document.createElement("script"),[...t.attributes].forEach(t=>{let e=t.nodeName;"type"!==e&&("data-rocket-type"===e&&(e="type"),"data-rocket-src"===e&&(e="src"),i.setAttribute(e,t.nodeValue))}),t.text&&(i.text=t.text),t.nonce&&(i.nonce=t.nonce),i.hasAttribute("src")?(i.addEventListener("load",o,{isRocket:!0}),i.addEventListener("error",()=>{i.setAttribute("data-rocket-status","failed-network"),e()},{isRocket:!0}),setTimeout(()=>{i.isConnected||e()},1)):(i.text=t.text,o()),i.isWPRocket=!0,t.parentNode.replaceChild(i,t);else{const i=t.getAttribute("data-rocket-type"),s=t.getAttribute("data-rocket-src");i?(t.type=i,t.removeAttribute("data-rocket-type")):t.removeAttribute("type"),t.addEventListener("load",o,{isRocket:!0}),t.addEventListener("error",i=>{this.CSPIssue&&i.target.src.startsWith("data:")?(console.log("WPRocket: CSP fallback activated"),t.removeAttribute("src"),this.G(t).then(e)):(t.setAttribute("data-rocket-status","failed-network"),e())},{isRocket:!0}),s?(t.fetchPriority="high",t.removeAttribute("data-rocket-src"),t.src=s):t.src="data:text/javascript;base64,"+window.btoa(unescape(encodeURIComponent(t.text)))}}catch(i){t.setAttribute("data-rocket-status","failed-transform"),e()}});t.setAttribute("data-rocket-status","skipped")}async C(t){const e=t.shift();return e?(e.isConnected&&await this.G(e),this.C(t)):Promise.resolve()}O(){this.Y([...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async],"preload")}Y(t,e){this.trash=this.trash||[];let i=!0;var o=document.createDocumentFragment();t.forEach(t=>{const s=t.getAttribute&&t.getAttribute("data-rocket-src")||t.src;if(s&&!s.startsWith("data:")){const n=document.createElement("link");n.href=s,n.rel=e,"preconnect"!==e&&(n.as="script",n.fetchPriority=i?"high":"low"),t.getAttribute&&"module"===t.getAttribute("data-rocket-type")&&(n.crossOrigin=!0),t.crossOrigin&&(n.crossOrigin=t.crossOrigin),t.integrity&&(n.integrity=t.integrity),t.nonce&&(n.nonce=t.nonce),o.appendChild(n),this.trash.push(n),i=!1}}),document.head.appendChild(o)}W(){this.trash.forEach(t=>t.remove())}async T(){try{document.readyState="interactive"}catch(t){}this.fauxDomReadyFired=!0;try{await this.K(),this.J(document,"readystatechange"),document.dispatchEvent(new Event("rocket-readystatechange")),await this.K(),document.rocketonreadystatechange&&document.rocketonreadystatechange(),await this.K(),this.J(document,"DOMContentLoaded"),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this.K(),this.J(window,"DOMContentLoaded"),window.dispatchEvent(new Event("rocket-DOMContentLoaded"))}catch(t){console.error(t)}}async A(){try{document.readyState="complete"}catch(t){}try{await this.K(),this.J(document,"readystatechange"),document.dispatchEvent(new Event("rocket-readystatechange")),await this.K(),document.rocketonreadystatechange&&document.rocketonreadystatechange(),await this.K(),this.J(window,"load"),window.dispatchEvent(new Event("rocket-load")),await this.K(),window.rocketonload&&window.rocketonload(),await this.K(),this.allJQueries.forEach(t=>t(window).trigger("rocket-jquery-load")),await this.K(),this.J(window,"pageshow");const t=new Event("rocket-pageshow");t.persisted=this.persisted,window.dispatchEvent(t),await this.K(),window.rocketonpageshow&&window.rocketonpageshow({persisted:this.persisted})}catch(t){console.error(t)}}async K(){Date.now()-this.lastBreath>45&&(await this.X(),this.lastBreath=Date.now())}async X(){return document.hidden?new Promise(t=>setTimeout(t)):new Promise(t=>requestAnimationFrame(t))}B(t,e=window){return e===document&&"readystatechange"===t||(e===document&&"DOMContentLoaded"===t||(e===window&&"DOMContentLoaded"===t||(e===window&&"load"===t||e===window&&"pageshow"===t)))}static run(){(new RocketLazyLoadScripts).t()}}RocketLazyLoadScripts.run()})();
 </script>
+	
+		<title>Grimório Proibido – V3 – Grimório Proibido</title>
+<link data-rocket-prefetch="" href="https://unpkg.com/" rel="dns-prefetch">
+<link data-rocket-prefetch="" href="https://connect.facebook.net/" rel="dns-prefetch">
+<link data-rocket-prefetch="" href="https://api.grimorioproibido.com.br/" rel="dns-prefetch">
+<link data-rocket-prefetch="" href="https://fonts.googleapis.com/" rel="dns-prefetch">
+<link data-rocket-prefetch="" href="https://static.pagtrust.com.br/" rel="dns-prefetch">
+<link data-rocket-preload="" as="style" href="./Grimório Proibido – V3 – Grimório Proibido_files/css" rel="preload">
+<link href="./Grimório Proibido – V3 – Grimório Proibido_files/css" media="all" onload="this.media=&#39;all&#39;" rel="stylesheet">
+<noscript data-wpr-hosted-gf-parameters=""><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CWork%20Sans%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;display=swap"></noscript><link rel="preload" data-rocket-preload="" as="image" href="https://grimorioproibido.com.br/wp-content/uploads/2026/06/bg-v2-grimorio-1.webp" fetchpriority="high">
+<meta name="robots" content="max-image-preview:large">
+<link href="https://fonts.gstatic.com/" crossorigin="" rel="preconnect">
+<link rel="alternate" type="application/rss+xml" title="Feed para Grimório Proibido »" href="https://grimorioproibido.com.br/feed/">
+<link rel="alternate" type="application/rss+xml" title="Feed de comentários para Grimório Proibido »" href="https://grimorioproibido.com.br/comments/feed/">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://grimorioproibido.com.br/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fgrimorioproibido.com.br%2Fpv3%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://grimorioproibido.com.br/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fgrimorioproibido.com.br%2Fpv3%2F&amp;format=xml">
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-emoji-styles-inline-css">
 
-</body>
-</html>
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:root { --wp--style--global--content-size: 800px;--wp--style--global--wide-size: 1200px; }:where(body) { margin: 0; }.wp-site-blocks > .alignleft { float: left; margin-right: 2em; }.wp-site-blocks > .alignright { float: right; margin-left: 2em; }.wp-site-blocks > .aligncenter { justify-content: center; margin-left: auto; margin-right: auto; }:where(.wp-site-blocks) > * { margin-block-start: 24px; margin-block-end: 0; }:where(.wp-site-blocks) > :first-child { margin-block-start: 0; }:where(.wp-site-blocks) > :last-child { margin-block-end: 0; }:root { --wp--style--block-gap: 24px; }:root :where(.is-layout-flow) > :first-child{margin-block-start: 0;}:root :where(.is-layout-flow) > :last-child{margin-block-end: 0;}:root :where(.is-layout-flow) > *{margin-block-start: 24px;margin-block-end: 0;}:root :where(.is-layout-constrained) > :first-child{margin-block-start: 0;}:root :where(.is-layout-constrained) > :last-child{margin-block-end: 0;}:root :where(.is-layout-constrained) > *{margin-block-start: 24px;margin-block-end: 0;}:root :where(.is-layout-flex){gap: 24px;}:root :where(.is-layout-grid){gap: 24px;}.is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:root :where(.wp-block-icon svg){width: 24px;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+<link data-minify="1" rel="stylesheet" id="hello-elementor-css" href="./Grimório Proibido – V3 – Grimório Proibido_files/reset.css" media="all">
+<link data-minify="1" rel="stylesheet" id="hello-elementor-theme-style-css" href="./Grimório Proibido – V3 – Grimório Proibido_files/theme.css" media="all">
+<link data-minify="1" rel="stylesheet" id="hello-elementor-header-footer-css" href="./Grimório Proibido – V3 – Grimório Proibido_files/header-footer.css" media="all">
+<link rel="stylesheet" id="elementor-frontend-css" href="./Grimório Proibido – V3 – Grimório Proibido_files/frontend.min.css" media="all">
+<link rel="stylesheet" id="elementor-post-8-css" href="./Grimório Proibido – V3 – Grimório Proibido_files/post-8.css" media="all">
+<link rel="stylesheet" id="widget-image-box-css" href="./Grimório Proibido – V3 – Grimório Proibido_files/widget-image-box.min.css" media="all">
+<link rel="stylesheet" id="widget-icon-list-css" href="./Grimório Proibido – V3 – Grimório Proibido_files/widget-icon-list.min.css" media="all">
+<link rel="stylesheet" id="widget-image-css" href="./Grimório Proibido – V3 – Grimório Proibido_files/widget-image.min.css" media="all">
+<link rel="stylesheet" id="widget-heading-css" href="./Grimório Proibido – V3 – Grimório Proibido_files/widget-heading.min.css" media="all">
+<link rel="stylesheet" id="widget-gallery-css" href="./Grimório Proibido – V3 – Grimório Proibido_files/widget-gallery.min.css" media="all">
+<link rel="stylesheet" id="elementor-gallery-css" href="./Grimório Proibido – V3 – Grimório Proibido_files/e-gallery.min.css" media="all">
+<link rel="stylesheet" id="e-transitions-css" href="./Grimório Proibido – V3 – Grimório Proibido_files/transitions.min.css" media="all">
+<link rel="stylesheet" id="widget-nested-accordion-css" href="./Grimório Proibido – V3 – Grimório Proibido_files/widget-nested-accordion.min.css" media="all">
+<link rel="stylesheet" id="elementor-post-274-css" href="./Grimório Proibido – V3 – Grimório Proibido_files/post-274.css" media="all">
+<style id="elementor-pro-custom-fonts-inline-css">
+@font-face {
+	font-family: 'Instrument Sans';
+	font-style: normal;
+	font-weight: normal;
+	font-display: swap;
+	src: url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/instrument-sans-400.eot');
+	src: url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/instrument-sans-400.eot?#iefix') format('embedded-opentype'),
+		url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/instrument-sans-400.woff2') format('woff2'),
+		url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/instrument-sans-400.woff') format('woff'),
+		url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/instrument-sans-400.ttf') format('truetype'),
+		url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/instrument-sans-400.svg#InstrumentSans') format('svg');
+}
+@font-face {
+	font-family: 'Instrument Sans';
+	font-style: normal;
+	font-weight: 600;
+	font-display: swap;
+	src: url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/instrument-sans-600.eot');
+	src: url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/instrument-sans-600.eot?#iefix') format('embedded-opentype'),
+		url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/instrument-sans-600.woff2') format('woff2'),
+		url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/instrument-sans-600.woff') format('woff'),
+		url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/instrument-sans-600.ttf') format('truetype'),
+		url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/instrument-sans-600.svg#InstrumentSans') format('svg');
+}
+
+/*# sourceURL=elementor-pro-custom-fonts-inline-css */
+</style>
+
+
+<script id="jquery-core-js" fetchpriority="high" src="./Grimório Proibido – V3 – Grimório Proibido_files/jquery.min.js.baixados" data-rocket-status="executed"></script>
+<script id="jquery-migrate-js" fetchpriority="high" src="./Grimório Proibido – V3 – Grimório Proibido_files/jquery-migrate.min.js.baixados" data-rocket-status="executed"></script>
+<link rel="https://api.w.org/" href="https://grimorioproibido.com.br/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="https://grimorioproibido.com.br/wp-json/wp/v2/pages/274"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://grimorioproibido.com.br/xmlrpc.php?rsd">
+<meta name="generator" content="WordPress 7.0.1">
+<link rel="canonical" href="https://grimorioproibido.com.br/pv3/">
+<link rel="shortlink" href="https://grimorioproibido.com.br/?p=274">
+<meta name="generator" content="Elementor 4.1.2; features: e_font_icon_svg, additional_custom_breakpoints; settings: css_print_method-external, google_font-enabled, font_display-swap">
+<!-- Google Tag Manager -->
+<script>!function(){"use strict";function l(e){for(var t=e,r=0,n=document.cookie.split(";");r<n.length;r++){var o=n[r].split("=");if(o[0].trim()===t)return o[1]}}function s(e){return localStorage.getItem(e)}function u(e){return window[e]}function A(e,t){e=document.querySelector(e);return t?null==e?void 0:e.getAttribute(t):null==e?void 0:e.textContent}var e=window,t=document,r="script",n="dataLayer",o="https://api.grimorioproibido.com.br",a="",i="bj5kvutkljw",c="r=Hg5RLCA4W147XjslPicxTQFXXkVFUxIFSg0eAhkaBAIYGh4EHRcfDxhEDwQZWxQZ",g="stapeUserId",v="",E="",d=!1;try{var d=!!g&&(m=navigator.userAgent,!!(m=new RegExp("Version/([0-9._]+)(.Mobile)?.*Safari.").exec(m)))&&16.4<=parseFloat(m[1]),f="stapeUserId"===g,I=d&&!f?function(e,t,r){void 0===t&&(t="");var n={cookie:l,localStorage:s,jsVariable:u,cssSelector:A},t=Array.isArray(t)?t:[t];if(e&&n[e])for(var o=n[e],a=0,i=t;a<i.length;a++){var c=i[a],c=r?o(c,r):o(c);if(c)return c}else console.warn("invalid uid source",e)}(g,v,E):void 0;d=d&&(!!I||f)}catch(e){console.error(e)}var m=e,g=(m[n]=m[n]||[],m[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"}),t.getElementsByTagName(r)[0]),v=I?"&bi="+encodeURIComponent(I):"",E=t.createElement(r),f=(d&&(i=8<i.length?i.replace(/([a-z]{8}$)/,"kp$1"):"kp"+i),!d&&a?a:o);E.async=!0,E.src=f+"/"+i+".js?"+c+v,null!=(e=g.parentNode)&&e.insertBefore(E,g)}();</script>
+<!-- End Google Tag Manager -->
+<link rel="icon" href="https://grimorioproibido.com.br/wp-content/uploads/2026/06/cropped-gr-favicon-32x32.webp" sizes="32x32">
+<link rel="icon" href="https://grimorioproibido.com.br/wp-content/uploads/2026/06/cropped-gr-favicon-192x192.webp" sizes="192x192">
+<link rel="apple-touch-icon" href="https://grimorioproibido.com.br/wp-content/uploads/2026/06/cropped-gr-favicon-180x180.webp">
+<meta name="msapplication-TileImage" content="https://grimorioproibido.com.br/wp-content/uploads/2026/06/cropped-gr-favicon-270x270.webp">
+<noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"><style id="wpr-lazyload-bg-container"></style><style>.elementor-274 .elementor-element.elementor-element-79e25e6:before{--wpr-bg-414a966e-f12e-4b3d-becf-cc40d9545a8e: url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/bottom-esquerda.webp');}</style><style>.elementor-274 .elementor-element.elementor-element-51c2aad:after{--wpr-bg-47b3e567-4d4c-455d-84bd-8cd9e865e51e: url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/top-direita.webp');}</style><style>.elementor-274 .elementor-element.elementor-element-51c2aad:before{--wpr-bg-6aa435bc-430e-477c-bea5-d85d1ee0b097: url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/top-esquerda.webp');}</style><style>.elementor-274 .elementor-element.elementor-element-51c2aad:not(.elementor-motion-effects-element-type-background), .elementor-274 .elementor-element.elementor-element-51c2aad > .elementor-motion-effects-container > .elementor-motion-effects-layer{--wpr-bg-d74172e0-182b-4826-a298-150fe9e25d21: url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/grunge-vintage-old-paper-background-1.webp');}</style><style>.elementor-274 .elementor-element.elementor-element-5f6f422:not(.elementor-motion-effects-element-type-background), .elementor-274 .elementor-element.elementor-element-5f6f422 > .elementor-motion-effects-container > .elementor-motion-effects-layer{--wpr-bg-541038e4-0f1b-44be-bfe6-1923cb6b38ac: url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/bg-separar-1.webp');}</style><style>.elementor-274 .elementor-element.elementor-element-9bc1f1d:before{--wpr-bg-93f9909f-c0f4-4b52-9590-a1f424b43b8d: url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/bottom-esquerda.webp');}</style><style>.elementor-274 .elementor-element.elementor-element-97a8bb0:after{--wpr-bg-01ba3828-af68-4e89-939f-779f9bda62ba: url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/top-direita.webp');}</style><style>.elementor-274 .elementor-element.elementor-element-97a8bb0:before{--wpr-bg-7a297218-4e71-48dd-b8a6-6b906acfe8f3: url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/top-esquerda.webp');}</style><style>.elementor-274 .elementor-element.elementor-element-97a8bb0:not(.elementor-motion-effects-element-type-background), .elementor-274 .elementor-element.elementor-element-97a8bb0 > .elementor-motion-effects-container > .elementor-motion-effects-layer{--wpr-bg-13c2d0b5-90a7-4494-9156-ae12c11d1792: url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/bg-v2-grimorio-mobile-1.webp');}</style><style id="wpr-lazyload-bg-exclusion">.elementor-274 .elementor-element.elementor-element-97a8bb0:not(.elementor-motion-effects-element-type-background), .elementor-274 .elementor-element.elementor-element-97a8bb0 > .elementor-motion-effects-container > .elementor-motion-effects-layer{--wpr-bg-142bb367-70e3-4bb7-a255-3a8e9cda73d8: url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/bg-v2-grimorio-1.webp');}.elementor-274 .elementor-element.elementor-element-14d6146::before, .elementor-274 .elementor-element.elementor-element-14d6146 > .elementor-background-video-container::before, .elementor-274 .elementor-element.elementor-element-14d6146 > .e-con-inner > .elementor-background-video-container::before, .elementor-274 .elementor-element.elementor-element-14d6146 > .elementor-background-slideshow::before, .elementor-274 .elementor-element.elementor-element-14d6146 > .e-con-inner > .elementor-background-slideshow::before, .elementor-274 .elementor-element.elementor-element-14d6146 > .elementor-motion-effects-container > .elementor-motion-effects-layer::before{--wpr-bg-73cbc3b3-dcf6-468c-8fc5-89c61a12c87b: url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/BG-FLOCOS-ORDEM-1-1.webp');}.elementor-274 .elementor-element.elementor-element-f649a07::before, .elementor-274 .elementor-element.elementor-element-f649a07 > .elementor-background-video-container::before, .elementor-274 .elementor-element.elementor-element-f649a07 > .e-con-inner > .elementor-background-video-container::before, .elementor-274 .elementor-element.elementor-element-f649a07 > .elementor-background-slideshow::before, .elementor-274 .elementor-element.elementor-element-f649a07 > .e-con-inner > .elementor-background-slideshow::before, .elementor-274 .elementor-element.elementor-element-f649a07 > .elementor-motion-effects-container > .elementor-motion-effects-layer::before{--wpr-bg-611657f0-2d72-4bdc-a30d-71d3441e209a: url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/BG-FLOCOS-ORDEM-1-1.webp');}.elementor-274 .elementor-element.elementor-element-9b0ec87::before, .elementor-274 .elementor-element.elementor-element-9b0ec87 > .elementor-background-video-container::before, .elementor-274 .elementor-element.elementor-element-9b0ec87 > .e-con-inner > .elementor-background-video-container::before, .elementor-274 .elementor-element.elementor-element-9b0ec87 > .elementor-background-slideshow::before, .elementor-274 .elementor-element.elementor-element-9b0ec87 > .e-con-inner > .elementor-background-slideshow::before, .elementor-274 .elementor-element.elementor-element-9b0ec87 > .elementor-motion-effects-container > .elementor-motion-effects-layer::before{--wpr-bg-2c52836f-dbaa-47b3-a524-2afbbeb8ef48: url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/BG-FLOCOS-ORDEM-1-1.webp');}.elementor-274 .elementor-element.elementor-element-57f08a0::before, .elementor-274 .elementor-element.elementor-element-57f08a0 > .elementor-background-video-container::before, .elementor-274 .elementor-element.elementor-element-57f08a0 > .e-con-inner > .elementor-background-video-container::before, .elementor-274 .elementor-element.elementor-element-57f08a0 > .elementor-background-slideshow::before, .elementor-274 .elementor-element.elementor-element-57f08a0 > .e-con-inner > .elementor-background-slideshow::before, .elementor-274 .elementor-element.elementor-element-57f08a0 > .elementor-motion-effects-container > .elementor-motion-effects-layer::before{--wpr-bg-db956ad4-674c-426e-b77a-63b0a75c2cdf: url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/BG-FLOCOS-ORDEM-1-1.webp');}.elementor-274 .elementor-element.elementor-element-2a4abf0::before, .elementor-274 .elementor-element.elementor-element-2a4abf0 > .elementor-background-video-container::before, .elementor-274 .elementor-element.elementor-element-2a4abf0 > .e-con-inner > .elementor-background-video-container::before, .elementor-274 .elementor-element.elementor-element-2a4abf0 > .elementor-background-slideshow::before, .elementor-274 .elementor-element.elementor-element-2a4abf0 > .e-con-inner > .elementor-background-slideshow::before, .elementor-274 .elementor-element.elementor-element-2a4abf0 > .elementor-motion-effects-container > .elementor-motion-effects-layer::before{--wpr-bg-64565980-60aa-4363-a472-954d1120db5b: url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/BG-FLOCOS-ORDEM-1-1.webp');}.elementor-274 .elementor-element.elementor-element-793c3a5::before, .elementor-274 .elementor-element.elementor-element-793c3a5 > .elementor-background-video-container::before, .elementor-274 .elementor-element.elementor-element-793c3a5 > .e-con-inner > .elementor-background-video-container::before, .elementor-274 .elementor-element.elementor-element-793c3a5 > .elementor-background-slideshow::before, .elementor-274 .elementor-element.elementor-element-793c3a5 > .e-con-inner > .elementor-background-slideshow::before, .elementor-274 .elementor-element.elementor-element-793c3a5 > .elementor-motion-effects-container > .elementor-motion-effects-layer::before{--wpr-bg-99717fcf-974c-421f-9ce9-29762564cf35: url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/BG-FLOCOS-ORDEM-1-1.webp');}.elementor-274 .elementor-element.elementor-element-9bc1f1d:after{--wpr-bg-b8debe96-c5f0-4f8d-94ad-01a610da07cb: url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/bottom-direita.webp');}.elementor-274 .elementor-element.elementor-element-79e25e6:after{--wpr-bg-e93f93b3-6ee4-4f35-9952-df27ee7af5fd: url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/bottom-direita.webp');}</style>
+<noscript>
+<style id="wpr-lazyload-bg-nostyle">.elementor-274 .elementor-element.elementor-element-97a8bb0:not(.elementor-motion-effects-element-type-background), .elementor-274 .elementor-element.elementor-element-97a8bb0 > .elementor-motion-effects-container > .elementor-motion-effects-layer{--wpr-bg-13c2d0b5-90a7-4494-9156-ae12c11d1792: url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/bg-v2-grimorio-mobile-1.webp');}.elementor-274 .elementor-element.elementor-element-5f6f422:not(.elementor-motion-effects-element-type-background), .elementor-274 .elementor-element.elementor-element-5f6f422 > .elementor-motion-effects-container > .elementor-motion-effects-layer{--wpr-bg-541038e4-0f1b-44be-bfe6-1923cb6b38ac: url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/bg-separar-1.webp');}.elementor-274 .elementor-element.elementor-element-51c2aad:not(.elementor-motion-effects-element-type-background), .elementor-274 .elementor-element.elementor-element-51c2aad > .elementor-motion-effects-container > .elementor-motion-effects-layer{--wpr-bg-d74172e0-182b-4826-a298-150fe9e25d21: url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/grunge-vintage-old-paper-background-1.webp');}.elementor-274 .elementor-element.elementor-element-9bc1f1d:before{--wpr-bg-93f9909f-c0f4-4b52-9590-a1f424b43b8d: url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/bottom-esquerda.webp');}.elementor-274 .elementor-element.elementor-element-97a8bb0:before{--wpr-bg-7a297218-4e71-48dd-b8a6-6b906acfe8f3: url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/top-esquerda.webp');}.elementor-274 .elementor-element.elementor-element-97a8bb0:after{--wpr-bg-01ba3828-af68-4e89-939f-779f9bda62ba: url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/top-direita.webp');}.elementor-274 .elementor-element.elementor-element-51c2aad:before{--wpr-bg-6aa435bc-430e-477c-bea5-d85d1ee0b097: url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/top-esquerda.webp');}.elementor-274 .elementor-element.elementor-element-51c2aad:after{--wpr-bg-47b3e567-4d4c-455d-84bd-8cd9e865e51e: url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/top-direita.webp');}.elementor-274 .elementor-element.elementor-element-79e25e6:before{--wpr-bg-414a966e-f12e-4b3d-becf-cc40d9545a8e: url('https://grimorioproibido.com.br/wp-content/uploads/2026/06/bottom-esquerda.webp');}</style>
+</noscript>
+<script type="application/javascript">const rocket_pairs = [{"selector":".elementor-274 .elementor-element.elementor-element-97a8bb0:not(.elementor-motion-effects-element-type-background), .elementor-274 .elementor-element.elementor-element-97a8bb0 > .elementor-motion-effects-container > .elementor-motion-effects-layer","style":".elementor-274 .elementor-element.elementor-element-97a8bb0:not(.elementor-motion-effects-element-type-background), .elementor-274 .elementor-element.elementor-element-97a8bb0 > .elementor-motion-effects-container > .elementor-motion-effects-layer{--wpr-bg-13c2d0b5-90a7-4494-9156-ae12c11d1792: url('https:\/\/grimorioproibido.com.br\/wp-content\/uploads\/2026\/06\/bg-v2-grimorio-mobile-1.webp');}","hash":"13c2d0b5-90a7-4494-9156-ae12c11d1792","url":"https:\/\/grimorioproibido.com.br\/wp-content\/uploads\/2026\/06\/bg-v2-grimorio-mobile-1.webp"},{"selector":".elementor-274 .elementor-element.elementor-element-5f6f422:not(.elementor-motion-effects-element-type-background), .elementor-274 .elementor-element.elementor-element-5f6f422 > .elementor-motion-effects-container > .elementor-motion-effects-layer","style":".elementor-274 .elementor-element.elementor-element-5f6f422:not(.elementor-motion-effects-element-type-background), .elementor-274 .elementor-element.elementor-element-5f6f422 > .elementor-motion-effects-container > .elementor-motion-effects-layer{--wpr-bg-541038e4-0f1b-44be-bfe6-1923cb6b38ac: url('https:\/\/grimorioproibido.com.br\/wp-content\/uploads\/2026\/06\/bg-separar-1.webp');}","hash":"541038e4-0f1b-44be-bfe6-1923cb6b38ac","url":"https:\/\/grimorioproibido.com.br\/wp-content\/uploads\/2026\/06\/bg-separar-1.webp"},{"selector":".elementor-274 .elementor-element.elementor-element-51c2aad:not(.elementor-motion-effects-element-type-background), .elementor-274 .elementor-element.elementor-element-51c2aad > .elementor-motion-effects-container > .elementor-motion-effects-layer","style":".elementor-274 .elementor-element.elementor-element-51c2aad:not(.elementor-motion-effects-element-type-background), .elementor-274 .elementor-element.elementor-element-51c2aad > .elementor-motion-effects-container > .elementor-motion-effects-layer{--wpr-bg-d74172e0-182b-4826-a298-150fe9e25d21: url('https:\/\/grimorioproibido.com.br\/wp-content\/uploads\/2026\/06\/grunge-vintage-old-paper-background-1.webp');}","hash":"d74172e0-182b-4826-a298-150fe9e25d21","url":"https:\/\/grimorioproibido.com.br\/wp-content\/uploads\/2026\/06\/grunge-vintage-old-paper-background-1.webp"},{"selector":".elementor-274 .elementor-element.elementor-element-9bc1f1d","style":".elementor-274 .elementor-element.elementor-element-9bc1f1d:before{--wpr-bg-93f9909f-c0f4-4b52-9590-a1f424b43b8d: url('https:\/\/grimorioproibido.com.br\/wp-content\/uploads\/2026\/06\/bottom-esquerda.webp');}","hash":"93f9909f-c0f4-4b52-9590-a1f424b43b8d","url":"https:\/\/grimorioproibido.com.br\/wp-content\/uploads\/2026\/06\/bottom-esquerda.webp"},{"selector":".elementor-274 .elementor-element.elementor-element-97a8bb0","style":".elementor-274 .elementor-element.elementor-element-97a8bb0:before{--wpr-bg-7a297218-4e71-48dd-b8a6-6b906acfe8f3: url('https:\/\/grimorioproibido.com.br\/wp-content\/uploads\/2026\/06\/top-esquerda.webp');}","hash":"7a297218-4e71-48dd-b8a6-6b906acfe8f3","url":"https:\/\/grimorioproibido.com.br\/wp-content\/uploads\/2026\/06\/top-esquerda.webp"},{"selector":".elementor-274 .elementor-element.elementor-element-97a8bb0","style":".elementor-274 .elementor-element.elementor-element-97a8bb0:after{--wpr-bg-01ba3828-af68-4e89-939f-779f9bda62ba: url('https:\/\/grimorioproibido.com.br\/wp-content\/uploads\/2026\/06\/top-direita.webp');}","hash":"01ba3828-af68-4e89-939f-779f9bda62ba","url":"https:\/\/grimorioproibido.com.br\/wp-content\/uploads\/2026\/06\/top-direita.webp"},{"selector":".elementor-274 .elementor-element.elementor-element-51c2aad","style":".elementor-274 .elementor-element.elementor-element-51c2aad:before{--wpr-bg-6aa435bc-430e-477c-bea5-d85d1ee0b097: url('https:\/\/grimorioproibido.com.br\/wp-content\/uploads\/2026\/06\/top-esquerda.webp');}","hash":"6aa435bc-430e-477c-bea5-d85d1ee0b097","url":"https:\/\/grimorioproibido.com.br\/wp-content\/uploads\/2026\/06\/top-esquerda.webp"},{"selector":".elementor-274 .elementor-element.elementor-element-51c2aad","style":".elementor-274 .elementor-element.elementor-element-51c2aad:after{--wpr-bg-47b3e567-4d4c-455d-84bd-8cd9e865e51e: url('https:\/\/grimorioproibido.com.br\/wp-content\/uploads\/2026\/06\/top-direita.webp');}","hash":"47b3e567-4d4c-455d-84bd-8cd9e865e51e","url":"https:\/\/grimorioproibido.com.br\/wp-content\/uploads\/2026\/06\/top-direita.webp"},{"selector":".elementor-274 .elementor-element.elementor-element-79e25e6","style":".elementor-274 .elementor-element.elementor-element-79e25e6:before{--wpr-bg-414a966e-f12e-4b3d-becf-cc40d9545a8e: url('https:\/\/grimorioproibido.com.br\/wp-content\/uploads\/2026\/06\/bottom-esquerda.webp');}","hash":"414a966e-f12e-4b3d-becf-cc40d9545a8e","url":"https:\/\/grimorioproibido.com.br\/wp-content\/uploads\/2026\/06\/bottom-esquerda.webp"}]; const rocket_excluded_pairs = [{"selector":".elementor-274 .elementor-element.elementor-element-97a8bb0:not(.elementor-motion-effects-element-type-background), .elementor-274 .elementor-element.elementor-element-97a8bb0 > .elementor-motion-effects-container > .elementor-motion-effects-layer","style":".elementor-274 .elementor-element.elementor-element-97a8bb0:not(.elementor-motion-effects-element-type-background), .elementor-274 .elementor-element.elementor-element-97a8bb0 > .elementor-motion-effects-container > .elementor-motion-effects-layer{--wpr-bg-142bb367-70e3-4bb7-a255-3a8e9cda73d8: url('https:\/\/grimorioproibido.com.br\/wp-content\/uploads\/2026\/06\/bg-v2-grimorio-1.webp');}","hash":"142bb367-70e3-4bb7-a255-3a8e9cda73d8","url":"https:\/\/grimorioproibido.com.br\/wp-content\/uploads\/2026\/06\/bg-v2-grimorio-1.webp"},{"selector":".elementor-274 .elementor-element.elementor-element-14d6146, .elementor-274 .elementor-element.elementor-element-14d6146 > .elementor-background-video-container, .elementor-274 .elementor-element.elementor-element-14d6146 > .e-con-inner > .elementor-background-video-container, .elementor-274 .elementor-element.elementor-element-14d6146 > .elementor-background-slideshow, .elementor-274 .elementor-element.elementor-element-14d6146 > .e-con-inner > .elementor-background-slideshow, .elementor-274 .elementor-element.elementor-element-14d6146 > .elementor-motion-effects-container > .elementor-motion-effects-layer","style":".elementor-274 .elementor-element.elementor-element-14d6146::before, .elementor-274 .elementor-element.elementor-element-14d6146 > .elementor-background-video-container::before, .elementor-274 .elementor-element.elementor-element-14d6146 > .e-con-inner > .elementor-background-video-container::before, .elementor-274 .elementor-element.elementor-element-14d6146 > .elementor-background-slideshow::before, .elementor-274 .elementor-element.elementor-element-14d6146 > .e-con-inner > .elementor-background-slideshow::before, .elementor-274 .elementor-element.elementor-element-14d6146 > .elementor-motion-effects-container > .elementor-motion-effects-layer::before{--wpr-bg-73cbc3b3-dcf6-468c-8fc5-89c61a12c87b: url('https:\/\/grimorioproibido.com.br\/wp-content\/uploads\/2026\/06\/BG-FLOCOS-ORDEM-1-1.webp');}","hash":"73cbc3b3-dcf6-468c-8fc5-89c61a12c87b","url":"https:\/\/grimorioproibido.com.br\/wp-content\/uploads\/2026\/06\/BG-FLOCOS-ORDEM-1-1.webp"},{"selector":".elementor-274 .elementor-element.elementor-element-f649a07, .elementor-274 .elementor-element.elementor-element-f649a07 > .elementor-background-video-container, .elementor-274 .elementor-element.elementor-element-f649a07 > .e-con-inner > .elementor-background-video-container, .elementor-274 .elementor-element.elementor-element-f649a07 > .elementor-background-slideshow, .elementor-274 .elementor-element.elementor-element-f649a07 > .e-con-inner > .elementor-background-slideshow, .elementor-274 .elementor-element.elementor-element-f649a07 > .elementor-motion-effects-container > .elementor-motion-effects-layer","style":".elementor-274 .elementor-element.elementor-element-f649a07::before, .elementor-274 .elementor-element.elementor-element-f649a07 > .elementor-background-video-container::before, .elementor-274 .elementor-element.elementor-element-f649a07 > .e-con-inner > .elementor-background-video-container::before, .elementor-274 .elementor-element.elementor-element-f649a07 > .elementor-background-slideshow::before, .elementor-274 .elementor-element.elementor-element-f649a07 > .e-con-inner > .elementor-background-slideshow::before, .elementor-274 .elementor-element.elementor-element-f649a07 > .elementor-motion-effects-container > .elementor-motion-effects-layer::before{--wpr-bg-611657f0-2d72-4bdc-a30d-71d3441e209a: url('https:\/\/grimorioproibido.com.br\/wp-content\/uploads\/2026\/06\/BG-FLOCOS-ORDEM-1-1.webp');}","hash":"611657f0-2d72-4bdc-a30d-71d3441e209a","url":"https:\/\/grimorioproibido.com.br\/wp-content\/uploads\/2026\/06\/BG-FLOCOS-ORDEM-1-1.webp"},{"selector":".elementor-274 .elementor-element.elementor-element-9b0ec87, .elementor-274 .elementor-element.elementor-element-9b0ec87 > .elementor-background-video-container, .elementor-274 .elementor-element.elementor-element-9b0ec87 > .e-con-inner > .elementor-background-video-container, .elementor-274 .elementor-element.elementor-element-9b0ec87 > .elementor-background-slideshow, .elementor-274 .elementor-element.elementor-element-9b0ec87 > .e-con-inner > .elementor-background-slideshow, .elementor-274 .elementor-element.elementor-element-9b0ec87 > .elementor-motion-effects-container > .elementor-motion-effects-layer","style":".elementor-274 .elementor-element.elementor-element-9b0ec87::before, .elementor-274 .elementor-element.elementor-element-9b0ec87 > .elementor-background-video-container::before, .elementor-274 .elementor-element.elementor-element-9b0ec87 > .e-con-inner > .elementor-background-video-container::before, .elementor-274 .elementor-element.elementor-element-9b0ec87 > .elementor-background-slideshow::before, .elementor-274 .elementor-element.elementor-element-9b0ec87 > .e-con-inner > .elementor-background-slideshow::before, .elementor-274 .elementor-element.elementor-element-9b0ec87 > .elementor-motion-effects-container > .elementor-motion-effects-layer::before{--wpr-bg-2c52836f-dbaa-47b3-a524-2afbbeb8ef48: url('https:\/\/grimorioproibido.com.br\/wp-content\/uploads\/2026\/06\/BG-FLOCOS-ORDEM-1-1.webp');}","hash":"2c52836f-dbaa-47b3-a524-2afbbeb8ef48","url":"https:\/\/grimorioproibido.com.br\/wp-content\/uploads\/2026\/06\/BG-FLOCOS-ORDEM-1-1.webp"},{"selector":".elementor-274 .elementor-element.elementor-element-57f08a0, .elementor-274 .elementor-element.elementor-element-57f08a0 > .elementor-background-video-container, .elementor-274 .elementor-element.elementor-element-57f08a0 > .e-con-inner > .elementor-background-video-container, .elementor-274 .elementor-element.elementor-element-57f08a0 > .elementor-background-slideshow, .elementor-274 .elementor-element.elementor-element-57f08a0 > .e-con-inner > .elementor-background-slideshow, .elementor-274 .elementor-element.elementor-element-57f08a0 > .elementor-motion-effects-container > .elementor-motion-effects-layer","style":".elementor-274 .elementor-element.elementor-element-57f08a0::before, .elementor-274 .elementor-element.elementor-element-57f08a0 > .elementor-background-video-container::before, .elementor-274 .elementor-element.elementor-element-57f08a0 > .e-con-inner > .elementor-background-video-container::before, .elementor-274 .elementor-element.elementor-element-57f08a0 > .elementor-background-slideshow::before, .elementor-274 .elementor-element.elementor-element-57f08a0 > .e-con-inner > .elementor-background-slideshow::before, .elementor-274 .elementor-element.elementor-element-57f08a0 > .elementor-motion-effects-container > .elementor-motion-effects-layer::before{--wpr-bg-db956ad4-674c-426e-b77a-63b0a75c2cdf: url('https:\/\/grimorioproibido.com.br\/wp-content\/uploads\/2026\/06\/BG-FLOCOS-ORDEM-1-1.webp');}","hash":"db956ad4-674c-426e-b77a-63b0a75c2cdf","url":"https:\/\/grimorioproibido.com.br\/wp-content\/uploads\/2026\/06\/BG-FLOCOS-ORDEM-1-1.webp"},{"selector":".elementor-274 .elementor-element.elementor-element-2a4abf0, .elementor-274 .elementor-element.elementor-element-2a4abf0 > .elementor-background-video-container, .elementor-274 .elementor-element.elementor-element-2a4abf0 > .e-con-inner > .elementor-background-video-container, .elementor-274 .elementor-element.elementor-element-2a4abf0 > .elementor-background-slideshow, .elementor-274 .elementor-element.elementor-element-2a4abf0 > .e-con-inner > .elementor-background-slideshow, .elementor-274 .elementor-element.elementor-element-2a4abf0 > .elementor-motion-effects-container > .elementor-motion-effects-layer","style":".elementor-274 .elementor-element.elementor-element-2a4abf0::before, .elementor-274 .elementor-element.elementor-element-2a4abf0 > .elementor-background-video-container::before, .elementor-274 .elementor-element.elementor-element-2a4abf0 > .e-con-inner > .elementor-background-video-container::before, .elementor-274 .elementor-element.elementor-element-2a4abf0 > .elementor-background-slideshow::before, .elementor-274 .elementor-element.elementor-element-2a4abf0 > .e-con-inner > .elementor-background-slideshow::before, .elementor-274 .elementor-element.elementor-element-2a4abf0 > .elementor-motion-effects-container > .elementor-motion-effects-layer::before{--wpr-bg-64565980-60aa-4363-a472-954d1120db5b: url('https:\/\/grimorioproibido.com.br\/wp-content\/uploads\/2026\/06\/BG-FLOCOS-ORDEM-1-1.webp');}","hash":"64565980-60aa-4363-a472-954d1120db5b","url":"https:\/\/grimorioproibido.com.br\/wp-content\/uploads\/2026\/06\/BG-FLOCOS-ORDEM-1-1.webp"},{"selector":".elementor-274 .elementor-element.elementor-element-793c3a5, .elementor-274 .elementor-element.elementor-element-793c3a5 > .elementor-background-video-container, .elementor-274 .elementor-element.elementor-element-793c3a5 > .e-con-inner > .elementor-background-video-container, .elementor-274 .elementor-element.elementor-element-793c3a5 > .elementor-background-slideshow, .elementor-274 .elementor-element.elementor-element-793c3a5 > .e-con-inner > .elementor-background-slideshow, .elementor-274 .elementor-element.elementor-element-793c3a5 > .elementor-motion-effects-container > .elementor-motion-effects-layer","style":".elementor-274 .elementor-element.elementor-element-793c3a5::before, .elementor-274 .elementor-element.elementor-element-793c3a5 > .elementor-background-video-container::before, .elementor-274 .elementor-element.elementor-element-793c3a5 > .e-con-inner > .elementor-background-video-container::before, .elementor-274 .elementor-element.elementor-element-793c3a5 > .elementor-background-slideshow::before, .elementor-274 .elementor-element.elementor-element-793c3a5 > .e-con-inner > .elementor-background-slideshow::before, .elementor-274 .elementor-element.elementor-element-793c3a5 > .elementor-motion-effects-container > .elementor-motion-effects-layer::before{--wpr-bg-99717fcf-974c-421f-9ce9-29762564cf35: url('https:\/\/grimorioproibido.com.br\/wp-content\/uploads\/2026\/06\/BG-FLOCOS-ORDEM-1-1.webp');}","hash":"99717fcf-974c-421f-9ce9-29762564cf35","url":"https:\/\/grimorioproibido.com.br\/wp-content\/uploads\/2026\/06\/BG-FLOCOS-ORDEM-1-1.webp"},{"selector":".elementor-274 .elementor-element.elementor-element-9bc1f1d","style":".elementor-274 .elementor-element.elementor-element-9bc1f1d:after{--wpr-bg-b8debe96-c5f0-4f8d-94ad-01a610da07cb: url('https:\/\/grimorioproibido.com.br\/wp-content\/uploads\/2026\/06\/bottom-direita.webp');}","hash":"b8debe96-c5f0-4f8d-94ad-01a610da07cb","url":"https:\/\/grimorioproibido.com.br\/wp-content\/uploads\/2026\/06\/bottom-direita.webp"},{"selector":".elementor-274 .elementor-element.elementor-element-79e25e6","style":".elementor-274 .elementor-element.elementor-element-79e25e6:after{--wpr-bg-e93f93b3-6ee4-4f35-9952-df27ee7af5fd: url('https:\/\/grimorioproibido.com.br\/wp-content\/uploads\/2026\/06\/bottom-direita.webp');}","hash":"e93f93b3-6ee4-4f35-9952-df27ee7af5fd","url":"https:\/\/grimorioproibido.com.br\/wp-content\/uploads\/2026\/06\/bottom-direita.webp"}];</script><meta name="generator" content="WP Rocket 3.21.3" data-wpr-features="wpr_lazyload_css_bg_img wpr_delay_js wpr_minify_js wpr_lazyload_images wpr_lazyload_iframes wpr_preconnect_external_domains wpr_oci wpr_minify_css wpr_preload_links wpr_desktop"><script id="__extension_remote_page_script__" src="./Grimório Proibido – V3 – Grimório Proibido_files/extension.js.baixados" async=""></script><script type="text/javascript" crossorigin="anonymous" src="./Grimório Proibido – V3 – Grimório Proibido_files/config.js.baixados"></script><script type="text/javascript" crossorigin="anonymous" src="./Grimório Proibido – V3 – Grimório Proibido_files/surveys.js.baixados"></script></head>
+<body class="wp-singular page-template page-template-elementor_canvas page page-id-274 wp-embed-responsive wp-theme-hello-elementor hello-elementor-default elementor-default elementor-template-canvas elementor-kit-8 elementor-page elementor-page-274 e--ua-isTouchDevice e--ua-blink e--ua-edge e--ua-webkit" data-elementor-device-mode="desktop">
+			<div data-elementor-type="wp-page" data-elementor-id="274" class="elementor elementor-274" data-elementor-post-type="page">
+				<div class="elementor-element elementor-element-97a8bb0 hero e-con-full e-flex e-con e-parent" data-id="97a8bb0" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}" data-rocket-lazy-bg-142bb367-70e3-4bb7-a255-3a8e9cda73d8="excluded" data-rocket-lazy-bg-13c2d0b5-90a7-4494-9156-ae12c11d1792="loaded" data-rocket-lazy-bg-7a297218-4e71-48dd-b8a6-6b906acfe8f3="loaded" data-rocket-lazy-bg-01ba3828-af68-4e89-939f-779f9bda62ba="loaded">
+		<div class="elementor-element elementor-element-9bc1f1d e-flex e-con-boxed e-con e-child" data-id="9bc1f1d" data-element_type="container" data-e-type="container" data-rocket-lazy-bg-b8debe96-c5f0-4f8d-94ad-01a610da07cb="excluded" data-rocket-lazy-bg-93f9909f-c0f4-4b52-9590-a1f424b43b8d="loaded">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-0571674 e-con-full e-flex e-con e-child" data-id="0571674" data-element_type="container" data-e-type="container">
+				<div class="elementor-element elementor-element-29b3376 elementor-widget__width-initial elementor-widget-mobile__width-initial elementor-position-top elementor-widget elementor-widget-image-box" data-id="29b3376" data-element_type="widget" data-e-type="widget" data-widget_type="image-box.default">
+					<div class="elementor-image-box-wrapper"><figure class="elementor-image-box-img"><img decoding="async" width="220" height="78" src="./Grimório Proibido – V3 – Grimório Proibido_files/logo-grimorio.svg" class="attachment-full size-full wp-image-61" alt=""></figure><div class="elementor-image-box-content"><h1 class="elementor-image-box-title">Descubra a única frase capaz de fazer qualquer <span class="dest">mulher te desejar!</span></h1><p class="elementor-image-box-description">Mesmo que você seja tímido, comum <br>ou invisível para elas hoje.</p></div></div>				</div>
+				<div class="elementor-element elementor-element-17db75e elementor-align-start elementor-widget__width-initial elementor-mobile-align-center elementor-tablet-align-center elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="17db75e" data-element_type="widget" data-e-type="widget" data-widget_type="icon-list.default">
+							<ul class="elementor-icon-list-items">
+							<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<svg aria-hidden="true" class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>						</span>
+										<span class="elementor-icon-list-text">E-book + Experiência em áudio;</span>
+									</li>
+								<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<svg aria-hidden="true" class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>						</span>
+										<span class="elementor-icon-list-text">Acesso imediato</span>
+									</li>
+						</ul>
+						</div>
+				<!-- BOTÃO PRINCIPAL ALTERADO -->
+				<div class="elementor-element elementor-element-5ab99bc elementor-align-center botao pagtrust-funnel-next-step elementor-tablet-align-justify elementor-widget-mobile__width-initial elementor-widget elementor-widget-button" data-id="5ab99bc" data-element_type="widget" data-e-type="widget" data-output-id="" data-widget_type="button.default" data-lp-bound="true">
+										<a class="elementor-button elementor-button-link elementor-size-sm" href="https://checkout.escalepay.com/3688728" target="_blank">
+						<span class="elementor-button-content-wrapper">
+									<span class="elementor-button-text">QUERO O GRIMÓRIO AGORA!</span>
+					</span>
+					</a>
+								</div>
+				</div>
+				<div class="elementor-element elementor-element-c76cb84 elementor-widget__width-initial elementor-absolute elementor-widget elementor-widget-image" data-id="c76cb84" data-element_type="widget" data-e-type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="image.default">
+															<img fetchpriority="high" decoding="async" width="376" height="434" src="./Grimório Proibido – V3 – Grimório Proibido_files/img-topo.webp" class="attachment-full size-full wp-image-143" alt="" srcset="https://grimorioproibido.com.br/wp-content/uploads/2026/06/img-topo.webp 376w, https://grimorioproibido.com.br/wp-content/uploads/2026/06/img-topo-260x300.webp 260w" sizes="(max-width: 376px) 100vw, 376px">															</div>
+				<div class="elementor-element elementor-element-664b4d0 elementor-widget__width-initial elementor-absolute elementor-widget elementor-widget-image" data-id="664b4d0" data-element_type="widget" data-e-type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="image.default">
+															<img decoding="async" width="321" height="533" src="./Grimório Proibido – V3 – Grimório Proibido_files/magnific__a-velvety-purple-rose.webp" class="attachment-full size-full wp-image-270" alt="" srcset="https://grimorioproibido.com.br/wp-content/uploads/2026/06/magnific__a-velvety-purple-rose.webp 321w, https://grimorioproibido.com.br/wp-content/uploads/2026/06/magnific__a-velvety-purple-rose-181x300.webp 181w" sizes="(max-width: 321px) 100vw, 321px">															</div>
+					</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-14d6146 e-flex e-con-boxed e-con e-parent" data-id="14d6146" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}" data-rocket-lazy-bg-73cbc3b3-dcf6-468c-8fc5-89c61a12c87b="excluded">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-90a405c elementor-widget__width-initial elementor-widget-mobile__width-initial elementor-widget elementor-widget-heading" data-id="90a405c" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+					<h2 class="elementor-heading-title elementor-size-default">O passo a passo que <span class="dest">está transformando homens comuns</span> em homens inesquecíveis:</h2>				</div>
+				<div class="elementor-element elementor-element-fc5c1f6 elementor-widget elementor-widget-heading" data-id="fc5c1f6" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+					<h2 class="elementor-heading-title elementor-size-default">RESULTADOS</h2>				</div>
+				<div class="elementor-element elementor-element-a3ef0a0 elementor-widget__width-initial elementor-widget elementor-widget-gallery" data-id="a3ef0a0" data-element_type="widget" data-e-type="widget" data-settings="{&quot;columns&quot;:3,&quot;gap&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:20,&quot;sizes&quot;:[]},&quot;gallery_layout&quot;:&quot;masonry&quot;,&quot;lazyload&quot;:&quot;yes&quot;,&quot;columns_tablet&quot;:2,&quot;columns_mobile&quot;:1,&quot;gap_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:10,&quot;sizes&quot;:[]},&quot;gap_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:10,&quot;sizes&quot;:[]},&quot;overlay_background&quot;:&quot;yes&quot;,&quot;content_hover_animation&quot;:&quot;fade-in&quot;}" data-widget_type="gallery.default">
+							<div class="elementor-gallery__container e-gallery-container e-gallery-masonry e-gallery--ltr e-gallery--lazyload" style="--hgap: 20px; --vgap: 20px; --animation-duration: 350ms; --columns: 3; --highest-column-gap-count: 1; padding-bottom: 48.2456%;">
+							<div class="e-gallery-item elementor-gallery-item elementor-animated-content" style="--item-height: 75%; --column: 0; --items-in-column: 0; --percent-height: 0%;">
+					<div class="e-gallery-image elementor-gallery-item__image e-gallery-image-loaded" data-thumbnail="https://grimorioproibido.com.br/wp-content/uploads/2026/06/depoimento-gr-2.webp" data-width="500" data-height="375" aria-label="" role="img" style="background-image: url(&quot;https://grimorioproibido.com.br/wp-content/uploads/2026/06/depoimento-gr-2.webp&quot;);"></div>
+											<div class="elementor-gallery-item__overlay"></div>
+														</div>
+							<div class="e-gallery-item elementor-gallery-item elementor-animated-content" style="--item-height: 75%; --column: 1; --items-in-column: 0; --percent-height: 0%;">
+					<div class="e-gallery-image elementor-gallery-item__image e-gallery-image-loaded" data-thumbnail="https://grimorioproibido.com.br/wp-content/uploads/2026/06/depoimento-gr-5.webp" data-width="500" data-height="375" aria-label="" role="img" style="background-image: url(&quot;https://grimorioproibido.com.br/wp-content/uploads/2026/06/depoimento-gr-5.webp&quot;);"></div>
+											<div class="elementor-gallery-item__overlay"></div>
+														</div>
+							<div class="e-gallery-item elementor-gallery-item elementor-animated-content" style="--item-height: 75%; --column: 2; --items-in-column: 0; --percent-height: 0%;">
+					<div class="e-gallery-image elementor-gallery-item__image e-gallery-image-loaded" data-thumbnail="https://grimorioproibido.com.br/wp-content/uploads/2026/06/depoimento-gr-1.webp" data-width="500" data-height="375" aria-label="" role="img" style="background-image: url(&quot;https://grimorioproibido.com.br/wp-content/uploads/2026/06/depoimento-gr-1.webp&quot;);"></div>
+											<div class="elementor-gallery-item__overlay"></div>
+														</div>
+							<div class="e-gallery-item elementor-gallery-item elementor-animated-content" style="--item-height: 75%; --column: 0; --items-in-column: 1; --percent-height: 50%;">
+					<div class="e-gallery-image elementor-gallery-item__image e-gallery-image-loaded" data-thumbnail="https://grimorioproibido.com.br/wp-content/uploads/2026/06/depoimento-gr-6.webp" data-width="500" data-height="375" aria-label="" role="img" style="background-image: url(&quot;https://grimorioproibido.com.br/wp-content/uploads/2026/06/depoimento-gr-6.webp&quot;);"></div>
+											<div class="elementor-gallery-item__overlay"></div>
+														</div>
+							<div class="e-gallery-item elementor-gallery-item elementor-animated-content" style="--item-height: 75%; --column: 1; --items-in-column: 1; --percent-height: 50%;">
+					<div class="e-gallery-image elementor-gallery-item__image e-gallery-image-loaded" data-thumbnail="https://grimorioproibido.com.br/wp-content/uploads/2026/06/depoimento-gr-4.webp" data-width="500" data-height="375" aria-label="" role="img" style="background-image: url(&quot;https://grimorioproibido.com.br/wp-content/uploads/2026/06/depoimento-gr-4.webp&quot;);"></div>
+											<div class="elementor-gallery-item__overlay"></div>
+														</div>
+							<div class="e-gallery-item elementor-gallery-item elementor-animated-content" style="--item-height: 75%; --column: 2; --items-in-column: 1; --percent-height: 50%;">
+					<div class="e-gallery-image elementor-gallery-item__image e-gallery-image-loaded" data-thumbnail="https://grimorioproibido.com.br/wp-content/uploads/2026/06/depoimento-gr-3.webp" data-width="500" data-height="375" aria-label="" role="img" style="background-image: url(&quot;https://grimorioproibido.com.br/wp-content/uploads/2026/06/depoimento-gr-3.webp&quot;);"></div>
+											<div class="elementor-gallery-item__overlay"></div>
+														</div>
+					</div>
+					</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-f649a07 e-flex e-con-boxed e-con e-parent" data-id="f649a07" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}" data-rocket-lazy-bg-611657f0-2d72-4bdc-a30d-71d3441e209a="excluded">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-5f6f422 e-con-full e-flex e-con e-child" data-id="5f6f422" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}" data-rocket-lazy-bg-541038e4-0f1b-44be-bfe6-1923cb6b38ac="loaded">
+				<div class="elementor-element elementor-element-deee6fb elementor-widget__width-initial elementor-widget-mobile__width-initial elementor-widget elementor-widget-heading" data-id="deee6fb" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+					<h2 class="elementor-heading-title elementor-size-default">Você já fez tudo certo com uma <br>mulher… <u>e mesmo assim ela sumiu?</u></h2>				</div>
+				<div class="elementor-element elementor-element-9dc039b elementor-widget__width-initial elementor-widget-mobile__width-initial elementor-widget elementor-widget-heading" data-id="9dc039b" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+					<h2 class="elementor-heading-title elementor-size-default">Você foi gentil. Foi atencioso. Mandou bom dia. Pagou a conta. Tratou ela como uma rainha.<br><br><b>E ela escolheu o cara que tratava ela pior que você.<br></b><br>Não foi azar. Não foi falta de sorte. E não é porque você é feio, baixo ou sem dinheiro.<br><br>A verdade é simples: <b>você nunca aprendeu o que faz uma mulher desejar um homem de verdade.</b><br><br>Ninguém te contou. Até agora.</h2>				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-9b0ec87 e-flex e-con-boxed e-con e-parent" data-id="9b0ec87" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}" data-rocket-lazy-bg-2c52836f-dbaa-47b3-a524-2afbbeb8ef48="excluded">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-79e25e6 e-con-full e-flex e-con e-child" data-id="79e25e6" data-element_type="container" data-e-type="container" data-rocket-lazy-bg-e93f93b3-6ee4-4f35-9952-df27ee7af5fd="excluded" data-rocket-lazy-bg-414a966e-f12e-4b3d-becf-cc40d9545a8e="loaded">
+		<div class="elementor-element elementor-element-51c2aad e-con-full e-flex e-con e-child" data-id="51c2aad" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}" data-rocket-lazy-bg-d74172e0-182b-4826-a298-150fe9e25d21="loaded" data-rocket-lazy-bg-6aa435bc-430e-477c-bea5-d85d1ee0b097="loaded" data-rocket-lazy-bg-47b3e567-4d4c-455d-84bd-8cd9e865e51e="loaded">
+		<div class="elementor-element elementor-element-6a6bb4a e-con-full e-flex e-con e-child" data-id="6a6bb4a" data-element_type="container" data-e-type="container">
+				<div class="elementor-element elementor-element-cc6965c elementor-widget__width-initial elementor-widget-mobile__width-initial elementor-widget elementor-widget-heading" data-id="cc6965c" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+					<h2 class="elementor-heading-title elementor-size-default">Toda técnica de paquera que <b>você viu na internet está</b> <span class="dest">te deixando invisível.</span></h2>				</div>
+				<div class="elementor-element elementor-element-9688dec elementor-widget__width-initial elementor-widget-mobile__width-initial elementor-widget elementor-widget-heading" data-id="9688dec" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+					<h2 class="elementor-heading-title elementor-size-default">Porque a mulher <b>não se apaixona pelo que você mostra.</b> Ela se apaixona <b>pelo que ela sente perto de você.</b><br><br>E isso, qualquer homem pode aprender a construir. Inclusive você.<br><br>O Grimório Proibido te ensina o passo a passo. <u>Simples, direto, do jeito que funciona na vida real.</u></h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-4051aad elementor-widget__width-initial elementor-widget elementor-widget-image" data-id="4051aad" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
+															<img decoding="async" width="580" height="491" class="attachment-full size-full wp-image-256 entered lazyloaded" alt="" data-lazy-srcset="https://grimorioproibido.com.br/wp-content/uploads/2026/06/img-grimorio-01.webp 580w, https://grimorioproibido.com.br/wp-content/uploads/2026/06/img-grimorio-01-300x254.webp 300w" data-lazy-sizes="(max-width: 580px) 100vw, 580px" data-lazy-src="https://grimorioproibido.com.br/wp-content/uploads/2026/06/img-grimorio-01.webp" src="./Grimório Proibido – V3 – Grimório Proibido_files/img-grimorio-01.webp" data-ll-status="loaded" sizes="(max-width: 580px) 100vw, 580px" srcset="https://grimorioproibido.com.br/wp-content/uploads/2026/06/img-grimorio-01.webp 580w, https://grimorioproibido.com.br/wp-content/uploads/2026/06/img-grimorio-01-300x254.webp 300w"><noscript><img loading="lazy" decoding="async" width="580" height="491" src="https://grimorioproibido.com.br/wp-content/uploads/2026/06/img-grimorio-01.webp" class="attachment-full size-full wp-image-256" alt="" srcset="https://grimorioproibido.com.br/wp-content/uploads/2026/06/img-grimorio-01.webp 580w, https://grimorioproibido.com.br/wp-content/uploads/2026/06/img-grimorio-01-300x254.webp 300w" sizes="(max-width: 580px) 100vw, 580px" /></noscript>															</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-57f08a0 e-flex e-con-boxed e-con e-parent" data-id="57f08a0" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}" data-rocket-lazy-bg-db956ad4-674c-426e-b77a-63b0a75c2cdf="excluded">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-dbbab6b elementor-widget__width-initial elementor-widget-mobile__width-initial elementor-widget elementor-widget-heading" data-id="dbbab6b" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+					<h2 class="elementor-heading-title elementor-size-default">Olha a diferença que <br><b>esse livro faz na sua vida:</b></h2>				</div>
+		<div class="elementor-element elementor-element-12a36eb e-con-full e-flex e-con e-child" data-id="12a36eb" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+				<div class="elementor-element elementor-element-ac5c75e elementor-widget elementor-widget-heading" data-id="ac5c75e" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+					<h2 class="elementor-heading-title elementor-size-default">Sem grimório</h2>				</div>
+				<div class="elementor-element elementor-element-28ea6ce elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="28ea6ce" data-element_type="widget" data-e-type="widget" data-widget_type="icon-list.default">
+							<ul class="elementor-icon-list-items">
+							<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<svg aria-hidden="true" class="e-font-icon-svg e-fas-times" viewBox="0 0 352 512" xmlns="http://www.w3.org/2000/svg"><path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg>						</span>
+										<span class="elementor-icon-list-text">Você manda mensagem e ela demora dias pra responder;</span>
+									</li>
+								<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<svg aria-hidden="true" class="e-font-icon-svg e-fas-times" viewBox="0 0 352 512" xmlns="http://www.w3.org/2000/svg"><path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg>						</span>
+										<span class="elementor-icon-list-text">É sempre você correndo atrás;</span>
+									</li>
+								<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<svg aria-hidden="true" class="e-font-icon-svg e-fas-times" viewBox="0 0 352 512" xmlns="http://www.w3.org/2000/svg"><path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg>						</span>
+										<span class="elementor-icon-list-text">Some da cabeça dela em poucas semanas;</span>
+									</li>
+								<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<svg aria-hidden="true" class="e-font-icon-svg e-fas-times" viewBox="0 0 352 512" xmlns="http://www.w3.org/2000/svg"><path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg>						</span>
+										<span class="elementor-icon-list-text">Vê ela escolher caras piores que você;</span>
+									</li>
+								<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<svg aria-hidden="true" class="e-font-icon-svg e-fas-times" viewBox="0 0 352 512" xmlns="http://www.w3.org/2000/svg"><path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg>						</span>
+										<span class="elementor-icon-list-text">Se sente invisível;</span>
+									</li>
+						</ul>
+						</div>
+				</div>
+		<div class="elementor-element elementor-element-ed557ba e-con-full e-flex e-con e-child" data-id="ed557ba" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+				<div class="elementor-element elementor-element-d757862 elementor-widget elementor-widget-heading" data-id="d757862" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+					<h2 class="elementor-heading-title elementor-size-default">Com o Livro:</h2>				</div>
+				<div class="elementor-element elementor-element-267e868 elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="267e868" data-element_type="widget" data-e-type="widget" data-widget_type="icon-list.default">
+							<ul class="elementor-icon-list-items">
+							<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<svg aria-hidden="true" class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>						</span>
+										<span class="elementor-icon-list-text">Ela responde rápido e quer sua atenção;</span>
+									</li>
+								<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<svg aria-hidden="true" class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>						</span>
+										<span class="elementor-icon-list-text">Você vira o homem que é procurado;</span>
+									</li>
+								<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<svg aria-hidden="true" class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>						</span>
+										<span class="elementor-icon-list-text">Fica na cabeça dela por muito tempo;</span>
+									</li>
+								<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<svg aria-hidden="true" class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>						</span>
+										<span class="elementor-icon-list-text">É escolhido, desejado e respeitado;</span>
+									</li>
+								<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<svg aria-hidden="true" class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>						</span>
+										<span class="elementor-icon-list-text">Sua presença é notada onde quer que você chegue;</span>
+									</li>
+						</ul>
+						</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-2a4abf0 e-flex e-con-boxed e-con e-parent" data-id="2a4abf0" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}" data-rocket-lazy-bg-64565980-60aa-4363-a472-954d1120db5b="excluded">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-8e30999 e-flex e-con-boxed e-con e-child" data-id="8e30999" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-6e0bfe3 elementor-widget__width-initial elementor-widget elementor-widget-image" data-id="6e0bfe3" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
+															<img decoding="async" width="709" height="589" src="./Grimório Proibido – V3 – Grimório Proibido_files/oferta-griomorio-v3.webp" class="attachment-full size-full wp-image-291 entered lazyloaded" alt="" data-lazy-srcset="https://grimorioproibido.com.br/wp-content/uploads/2026/06/oferta-griomorio-v3.webp 709w, https://grimorioproibido.com.br/wp-content/uploads/2026/06/oferta-griomorio-v3-300x249.webp 300w" data-lazy-sizes="(max-width: 709px) 100vw, 709px" data-lazy-src="https://grimorioproibido.com.br/wp-content/uploads/2026/06/oferta-griomorio-v3.webp" data-ll-status="loaded" sizes="(max-width: 709px) 100vw, 709px" srcset="https://grimorioproibido.com.br/wp-content/uploads/2026/06/oferta-griomorio-v3.webp 709w, https://grimorioproibido.com.br/wp-content/uploads/2026/06/oferta-griomorio-v3-300x249.webp 300w"><noscript><img loading="lazy" decoding="async" width="709" height="589" src="https://grimorioproibido.com.br/wp-content/uploads/2026/06/oferta-griomorio-v3.webp" class="attachment-full size-full wp-image-291" alt="" srcset="https://grimorioproibido.com.br/wp-content/uploads/2026/06/oferta-griomorio-v3.webp 709w, https://grimorioproibido.com.br/wp-content/uploads/2026/06/oferta-griomorio-v3-300x249.webp 300w" sizes="(max-width: 709px) 100vw, 709px" /></noscript>															</div>
+				<div class="elementor-element elementor-element-b541209 elementor-widget__width-initial elementor-widget elementor-widget-heading" data-id="b541209" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+					<h2 class="elementor-heading-title elementor-size-default">OFERTA <b>ESPECIAL</b></h2>				</div>
+				<div class="elementor-element elementor-element-fefd2f7 elementor-align-center elementor-widget__width-initial elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="fefd2f7" data-element_type="widget" data-e-type="widget" data-widget_type="icon-list.default">
+							<ul class="elementor-icon-list-items">
+							<li class="elementor-icon-list-item">
+											<span class="elementor-icon-list-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none"><path d="M13.7527 0.25496L0.342398 12.3004C-0.067361 12.6685 -0.116388 13.3053 0.233448 13.7156L2.49148 16.3641C2.7968 16.7222 3.30344 16.8072 3.71084 16.5599C4.00725 16.383 4.35191 16.3153 4.68615 16.3681C5.02039 16.421 5.32355 16.5912 5.54403 16.8498C5.76451 17.1084 5.88867 17.4394 5.89539 17.7864C5.90211 18.1335 5.79096 18.4752 5.58088 18.7532C5.28796 19.1349 5.3029 19.6616 5.60821 20.0197L7.86624 22.6682C8.21608 23.0785 8.83757 23.1131 9.24732 22.745L22.6576 10.6996C23.0674 10.3315 23.1164 9.69469 22.7666 9.28436L20.5085 6.6359C20.2032 6.2778 19.6966 6.19275 19.2892 6.44013C18.9928 6.61698 18.6481 6.68474 18.3139 6.63188C17.9796 6.57902 17.6765 6.4088 17.456 6.1502C17.2355 5.8916 17.1113 5.5606 17.1046 5.21355C17.0979 4.8665 17.209 4.52485 17.4191 4.24675C17.712 3.86509 17.6971 3.33838 17.3918 2.98028L15.1338 0.331814C14.7839 -0.0785108 14.1624 -0.113095 13.7527 0.25496ZM15.4502 3.78897C14.9187 5.01724 15.0987 6.46277 15.9701 7.48485C16.8415 8.50694 18.2135 8.88176 19.4701 8.50397L20.6405 9.8767L17.6604 12.5535L16.3883 11.0614L15.6432 11.7306L16.9154 13.2227L8.72021 20.5838L7.54985 19.211C8.08131 17.9828 7.90132 16.5372 7.02991 15.5151C6.1585 14.4931 4.78648 14.1182 3.52991 14.496L2.35955 13.1233L10.5547 5.7622L11.1908 6.50824L11.9358 5.83905L11.2997 5.09301L14.2798 2.41624L15.4502 3.78897Z" fill="url(#paint0_radial_4_212)"></path><path d="M11.8268 7.25429L12.5719 6.5851L13.844 8.07719L13.099 8.74638L11.8268 7.25429ZM13.735 9.49243L14.4801 8.82324L15.7522 10.3153L15.0072 10.9845L13.735 9.49243Z" fill="url(#paint1_radial_4_212)"></path><defs><radialgradient id="paint0_radial_4_212" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(5.612) rotate(75.6407) scale(23.7417)"><stop stop-color="#D4A361"></stop><stop offset="1" stop-color="#9B6F33"></stop></radialgradient><radialgradient id="paint1_radial_4_212" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(5.612) rotate(75.6407) scale(23.7417)"><stop stop-color="#D4A361"></stop><stop offset="1" stop-color="#9B6F33"></stop></radialgradient></defs></svg>						</span>
+										<span class="elementor-icon-list-text">Por apenas:</span>
+									</li>
+						</ul>
+						</div>
+				<!-- PREÇO ALTERADO COM RISCADO -->
+				<div class="elementor-element elementor-element-497bcc0 elementor-widget__width-initial elementor-widget elementor-widget-heading" data-id="497bcc0" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+					<h2 class="elementor-heading-title elementor-size-default"> <span class="dest1">249,99 MZN</span></h2> 
+					<span style="text-decoration: line-through; color: #666; font-size: 1.90em; margin-right: 10px;"> 499,00 MZN</span> 
+				</div>
+				<!-- BOTÃO DA OFERTA ALTERADO -->
+				<div class="elementor-element elementor-element-658004b elementor-align-center botao pagtrust-funnel-next-step elementor-tablet-align-justify elementor-widget-mobile__width-initial elementor-widget elementor-widget-button" data-id="658004b" data-element_type="widget" data-e-type="widget" data-output-id="" data-widget_type="button.default" data-lp-bound="true">
+										<a class="elementor-button elementor-button-link elementor-size-sm" href="https://checkout.escalepay.com/3688728" target="_blank">
+						<span class="elementor-button-content-wrapper">
+									<span class="elementor-button-text">QUERO O GRIMÓRIO AGORA!</span>
+					</span>
+					</a>
+								</div>
+				
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-793c3a5 e-flex e-con-boxed e-con e-parent" data-id="793c3a5" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}" data-rocket-lazy-bg-99717fcf-974c-421f-9ce9-29762564cf35="excluded">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-f4b0638 elementor-position-left elementor-vertical-align-middle elementor-widget__width-initial elementor-widget elementor-widget-image-box" data-id="f4b0638" data-element_type="widget" data-e-type="widget" data-widget_type="image-box.default">
+					<div class="elementor-image-box-wrapper"><figure class="elementor-image-box-img"><img decoding="async" width="470" height="246" src="./Grimório Proibido – V3 – Grimório Proibido_files/7-DIAS-GARANTIDO-v3.webp" class="attachment-full size-full wp-image-289 entered lazyloaded" alt="" data-lazy-srcset="https://grimorioproibido.com.br/wp-content/uploads/2026/06/7-DIAS-GARANTIDO-v3.webp 470w, https://grimorioproibido.com.br/wp-content/uploads/2026/06/7-DIAS-GARANTIDO-v3-300x157.webp 300w" data-lazy-sizes="(max-width: 470px) 100vw, 470px" data-lazy-src="https://grimorioproibido.com.br/wp-content/uploads/2026/06/7-DIAS-GARANTIDO-v3.webp" data-ll-status="loaded" sizes="(max-width: 470px) 100vw, 470px" srcset="https://grimorioproibido.com.br/wp-content/uploads/2026/06/7-DIAS-GARANTIDO-v3.webp 470w, https://grimorioproibido.com.br/wp-content/uploads/2026/06/7-DIAS-GARANTIDO-v3-300x157.webp 300w"><noscript><img loading="lazy" decoding="async" width="470" height="246" src="https://grimorioproibido.com.br/wp-content/uploads/2026/06/7-DIAS-GARANTIDO-v3.webp" class="attachment-full size-full wp-image-289" alt="" srcset="https://grimorioproibido.com.br/wp-content/uploads/2026/06/7-DIAS-GARANTIDO-v3.webp 470w, https://grimorioproibido.com.br/wp-content/uploads/2026/06/7-DIAS-GARANTIDO-v3-300x157.webp 300w" sizes="(max-width: 470px) 100vw, 470px" /></noscript></figure><div class="elementor-image-box-content"><p class="elementor-image-box-description"><br>Você tem uma <b>garantia incondicional de 7 dias</b> protegido por lei. Caso você não goste do produto por algum motivo, você pode cancelar a compra e receber seu dinheiro de volta.</p></div></div>				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-483dec1 e-flex e-con-boxed e-con e-parent" data-id="483dec1" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-86ff6aa e-con-full e-flex e-con e-child" data-id="86ff6aa" data-element_type="container" data-e-type="container">
+				<div class="elementor-element elementor-element-fd15117 elementor-widget elementor-widget-image" data-id="fd15117" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
+															<img decoding="async" width="488" height="218" class="attachment-full size-full wp-image-106 entered lazyloaded" alt="" data-lazy-srcset="https://grimorioproibido.com.br/wp-content/uploads/2026/06/fe-alves.webp 488w, https://grimorioproibido.com.br/wp-content/uploads/2026/06/fe-alves-300x134.webp 300w" data-lazy-sizes="(max-width: 488px) 100vw, 488px" data-lazy-src="https://grimorioproibido.com.br/wp-content/uploads/2026/06/fe-alves.webp" src="./Grimório Proibido – V3 – Grimório Proibido_files/fe-alves.webp" data-ll-status="loaded" sizes="(max-width: 488px) 100vw, 488px" srcset="https://grimorioproibido.com.br/wp-content/uploads/2026/06/fe-alves.webp 488w, https://grimorioproibido.com.br/wp-content/uploads/2026/06/fe-alves-300x134.webp 300w"><noscript><img loading="lazy" decoding="async" width="488" height="218" src="https://grimorioproibido.com.br/wp-content/uploads/2026/06/fe-alves.webp" class="attachment-full size-full wp-image-106" alt="" srcset="https://grimorioproibido.com.br/wp-content/uploads/2026/06/fe-alves.webp 488w, https://grimorioproibido.com.br/wp-content/uploads/2026/06/fe-alves-300x134.webp 300w" sizes="(max-width: 488px) 100vw, 488px" /></noscript>															</div>
+				<div class="elementor-element elementor-element-2538689 elementor-widget__width-initial elementor-widget elementor-widget-heading" data-id="2538689" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+					<h2 class="elementor-heading-title elementor-size-default">Um solucionador de problemas complexos das relações humanas. Traduzo o complexo em SIMPLES usando da comunicação.<br><br>Especialista em relacionamentos, atuando na área há mais de 8 anos.Idealizador de grandes eventos e movimentos que já alcançaram e impactaram a vida de 1 bilhão de pessoas.<br><br>Já ajudou grandes celebridades e influenciadores a resolverem questões amorosas e desbloquearem relacionamentos melhores e mais saudáveis.<br><br>Fe Alves é considerado um dos maiores especialistas do Brasil quando o assunto é relacionamento, autoestima e comunicação.</h2>				</div>
+				</div>
+				<div class="elementor-element elementor-element-6513fb7 elementor-widget__width-initial elementor-widget elementor-widget-image" data-id="6513fb7" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
+															<img decoding="async" width="677" height="776" class="attachment-full size-full wp-image-301 entered lazyloaded" alt="" data-lazy-srcset="https://grimorioproibido.com.br/wp-content/uploads/2026/06/Frame-2087330371-1.webp 677w, https://grimorioproibido.com.br/wp-content/uploads/2026/06/Frame-2087330371-1-262x300.webp 262w" data-lazy-sizes="(max-width: 677px) 100vw, 677px" data-lazy-src="https://grimorioproibido.com.br/wp-content/uploads/2026/06/Frame-2087330371-1.webp" src="./Grimório Proibido – V3 – Grimório Proibido_files/Frame-2087330371-1.webp" data-ll-status="loaded" sizes="(max-width: 677px) 100vw, 677px" srcset="https://grimorioproibido.com.br/wp-content/uploads/2026/06/Frame-2087330371-1.webp 677w, https://grimorioproibido.com.br/wp-content/uploads/2026/06/Frame-2087330371-1-262x300.webp 262w"><noscript><img loading="lazy" decoding="async" width="677" height="776" src="https://grimorioproibido.com.br/wp-content/uploads/2026/06/Frame-2087330371-1.webp" class="attachment-full size-full wp-image-301" alt="" srcset="https://grimorioproibido.com.br/wp-content/uploads/2026/06/Frame-2087330371-1.webp 677w, https://grimorioproibido.com.br/wp-content/uploads/2026/06/Frame-2087330371-1-262x300.webp 262w" sizes="(max-width: 677px) 100vw, 677px" /></noscript>															</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-4e36f5a e-flex e-con-boxed e-con e-parent" data-id="4e36f5a" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-1b9d237 elementor-mobile-align-center elementor-widget-mobile__width-initial elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="1b9d237" data-element_type="widget" data-e-type="widget" data-widget_type="icon-list.default">
+							<ul class="elementor-icon-list-items">
+							<li class="elementor-icon-list-item">
+										<span class="elementor-icon-list-text">Perguntas frequentes</span>
+									</li>
+						</ul>
+						</div>
+				<div class="elementor-element elementor-element-ccd7500 elementor-widget elementor-widget-heading" data-id="ccd7500" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+					<h2 class="elementor-heading-title elementor-size-default">F.A.Q</h2>				</div>
+				<div class="elementor-element elementor-element-97a6b6f elementor-widget__width-initial elementor-widget elementor-widget-n-accordion" data-id="97a6b6f" data-element_type="widget" data-e-type="widget" data-settings="{&quot;default_state&quot;:&quot;expanded&quot;,&quot;max_items_expended&quot;:&quot;one&quot;,&quot;n_accordion_animation_duration&quot;:{&quot;unit&quot;:&quot;ms&quot;,&quot;size&quot;:400,&quot;sizes&quot;:[]}}" data-widget_type="nested-accordion.default">
+							<div class="e-n-accordion" aria-label="Accordion. Open links with Enter or Space, close with Escape, and navigate with Arrow Keys">
+						<details id="e-n-accordion-item-1590" class="e-n-accordion-item" open="">
+				<summary class="e-n-accordion-item-title" data-accordion-index="1" tabindex="0" aria-expanded="true" aria-controls="e-n-accordion-item-1590">
+					<span class="e-n-accordion-item-title-header"><div class="e-n-accordion-item-title-text"> Para quem é esse livro? </div></span>
+							<span class="e-n-accordion-item-title-icon">
+			<span class="e-opened"><svg aria-hidden="true" class="e-font-icon-svg e-fas-minus" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg></span>
+			<span class="e-closed"><svg aria-hidden="true" class="e-font-icon-svg e-fas-plus" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg></span>
+		</span>
+
+						</summary>
+				<div role="region" aria-labelledby="e-n-accordion-item-1590" class="elementor-element elementor-element-342dd40 e-con-full e-flex e-con e-child" data-id="342dd40" data-element_type="container" data-e-type="container">
+				<div class="elementor-element elementor-element-67257b8 elementor-widget elementor-widget-text-editor" data-id="67257b8" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+									<p>Para todo homem que quer parar de ser ignorado e virar o homem que as mulheres desejam. Tímido ou não. Começando do zero ou não.</p>								</div>
+				</div>
+					</details>
+						<details id="e-n-accordion-item-1591" class="e-n-accordion-item">
+				<summary class="e-n-accordion-item-title" data-accordion-index="2" tabindex="-1" aria-expanded="false" aria-controls="e-n-accordion-item-1591">
+					<span class="e-n-accordion-item-title-header"><div class="e-n-accordion-item-title-text"> Como vou receber? </div></span>
+							<span class="e-n-accordion-item-title-icon">
+			<span class="e-opened"><svg aria-hidden="true" class="e-font-icon-svg e-fas-minus" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg></span>
+			<span class="e-closed"><svg aria-hidden="true" class="e-font-icon-svg e-fas-plus" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg></span>
+		</span>
+
+						</summary>
+				<div role="region" aria-labelledby="e-n-accordion-item-1591" class="elementor-element elementor-element-621cb79 e-con-full e-flex e-con e-child" data-id="621cb79" data-element_type="container" data-e-type="container">
+				<div class="elementor-element elementor-element-de33a7c elementor-widget elementor-widget-text-editor" data-id="de33a7c" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+									<p>Na hora. Depois da compra você recebe seu acesso e já pode ler/ouvir no celular ou computador.</p>								</div>
+				</div>
+					</details>
+						<details id="e-n-accordion-item-1592" class="e-n-accordion-item">
+				<summary class="e-n-accordion-item-title" data-accordion-index="3" tabindex="-1" aria-expanded="false" aria-controls="e-n-accordion-item-1592">
+					<span class="e-n-accordion-item-title-header"><div class="e-n-accordion-item-title-text"> Preciso decorar frase pronta? </div></span>
+							<span class="e-n-accordion-item-title-icon">
+			<span class="e-opened"><svg aria-hidden="true" class="e-font-icon-svg e-fas-minus" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg></span>
+			<span class="e-closed"><svg aria-hidden="true" class="e-font-icon-svg e-fas-plus" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg></span>
+		</span>
+
+						</summary>
+				<div role="region" aria-labelledby="e-n-accordion-item-1592" class="elementor-element elementor-element-c8bc595 e-con-full e-flex e-con e-child" data-id="c8bc595" data-element_type="container" data-e-type="container">
+				<div class="elementor-element elementor-element-f48a7e8 elementor-widget elementor-widget-text-editor" data-id="f48a7e8" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+									<p>Não. Você vai entender o jeito certo de falar e agir. As frases vêm naturais, do seu jeito.</p>								</div>
+				</div>
+					</details>
+						<details id="e-n-accordion-item-1593" class="e-n-accordion-item">
+				<summary class="e-n-accordion-item-title" data-accordion-index="4" tabindex="-1" aria-expanded="false" aria-controls="e-n-accordion-item-1593">
+					<span class="e-n-accordion-item-title-header"><div class="e-n-accordion-item-title-text"> E se eu não gostar? </div></span>
+							<span class="e-n-accordion-item-title-icon">
+			<span class="e-opened"><svg aria-hidden="true" class="e-font-icon-svg e-fas-minus" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg></span>
+			<span class="e-closed"><svg aria-hidden="true" class="e-font-icon-svg e-fas-plus" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg></span>
+		</span>
+
+						</summary>
+				<div role="region" aria-labelledby="e-n-accordion-item-1593" class="elementor-element elementor-element-027e1e6 e-con-full e-flex e-con e-child" data-id="027e1e6" data-element_type="container" data-e-type="container">
+				<div class="elementor-element elementor-element-8c5154f elementor-widget elementor-widget-text-editor" data-id="8c5154f" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+									<p>Você tem 7 dias para pedir seu dinheiro de volta. Risco zero.</p>								</div>
+				</div>
+					</details>
+						<details id="e-n-accordion-item-1594" class="e-n-accordion-item">
+				<summary class="e-n-accordion-item-title" data-accordion-index="5" tabindex="-1" aria-expanded="false" aria-controls="e-n-accordion-item-1594">
+					<span class="e-n-accordion-item-title-header"><div class="e-n-accordion-item-title-text"> O pagamento é seguro? </div></span>
+							<span class="e-n-accordion-item-title-icon">
+			<span class="e-opened"><svg aria-hidden="true" class="e-font-icon-svg e-fas-minus" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg></span>
+			<span class="e-closed"><svg aria-hidden="true" class="e-font-icon-svg e-fas-plus" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg></span>
+		</span>
+
+						</summary>
+				<div role="region" aria-labelledby="e-n-accordion-item-1594" class="elementor-element elementor-element-d2329d4 e-con-full e-flex e-con e-child" data-id="d2329d4" data-element_type="container" data-e-type="container">
+				<div class="elementor-element elementor-element-be9d63c elementor-widget elementor-widget-text-editor" data-id="be9d63c" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+									<p>100% seguro, processado pela maior plataforma Escalepay</p>								</div>
+				</div>
+					</details>
+					</div>
+						</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-bd6c32b e-flex e-con-boxed e-con e-parent" data-id="bd6c32b" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-ad11101 elementor-icon-list--layout-inline elementor-mobile-align-center elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="ad11101" data-element_type="widget" data-e-type="widget" data-widget_type="icon-list.default">
+							<ul class="elementor-icon-list-items elementor-inline-items">
+							<li class="elementor-icon-list-item elementor-inline-item">
+											<a href="https://manualdareconquista.com.br/politicas-de-privacidade/?funnel=fn8fb5ff69&amp;step=130&amp;actionId=709962&amp;currentStepId=556080&amp;fbclid=PAb21jcAS-tJ5leHRuA2FlbQEwAGFkaWQBqzcBH1IeAnNydGMGYXBwX2lkDzU2NzA2NzM0MzM1MjQyNwABpxEG4Y72FRtD-UuPgjIah6HjJ-XoNVEnvqBgYkdgYgxaUYwB2imcWjCFc72r_aem_8ciJbjh9bpe_gTq4NQ3Qcg&amp;previousStepId=556048&amp;rda=false&amp;referrer=https%3A%2F%2Finstagram.com%2F&amp;utm_campaign=%5BG%5D%2B%5BWW%5D%2B%5BPERPETUO%5D%2B%5BVENDA%5D%2B%5BGR-PAGE-39%5D%2B%5BPAGINA%5D%2B%5BCAMP53523%5D%2B%5BCBO%5D%2B%5BVOLUME%5D%2B%5B1-1-6%5D%2B-%2B23%2F06%2F26%7C120250292637540418&amp;utm_content=ADS011-VENDA-GR-PAGE-39-GABRIEL%7C120250292852400418&amp;utm_id=120250292637540418&amp;utm_medium=%5BADVANTAGE%5D%7C120250292637600418&amp;utm_source=FB&amp;utm_term=Instagram_Feed&amp;sck=1783714201924_17837142257415" target="_blank">
+
+											<span class="elementor-icon-list-text">Política de Privacidade</span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item elementor-inline-item">
+											<a href="https://manualdareconquista.com.br/termos-de-uso/?funnel=fn8fb5ff69&amp;step=130&amp;actionId=709962&amp;currentStepId=556080&amp;fbclid=PAb21jcAS-tJ5leHRuA2FlbQEwAGFkaWQBqzcBH1IeAnNydGMGYXBwX2lkDzU2NzA2NzM0MzM1MjQyNwABpxEG4Y72FRtD-UuPgjIah6HjJ-XoNVEnvqBgYkdgYgxaUYwB2imcWjCFc72r_aem_8ciJbjh9bpe_gTq4NQ3Qcg&amp;previousStepId=556048&amp;rda=false&amp;referrer=https%3A%2F%2Finstagram.com%2F&amp;utm_campaign=%5BG%5D%2B%5BWW%5D%2B%5BPERPETUO%5D%2B%5BVENDA%5D%2B%5BGR-PAGE-39%5D%2B%5BPAGINA%5D%2B%5BCAMP53523%5D%2B%5BCBO%5D%2B%5BVOLUME%5D%2B%5B1-1-6%5D%2B-%2B23%2F06%2F26%7C120250292637540418&amp;utm_content=ADS011-VENDA-GR-PAGE-39-GABRIEL%7C120250292852400418&amp;utm_id=120250292637540418&amp;utm_medium=%5BADVANTAGE%5D%7C120250292637600418&amp;utm_source=FB&amp;utm_term=Instagram_Feed&amp;sck=1783714201924_17837142257415" target="_blank">
+
+											<span class="elementor-icon-list-text">Termos de Uso</span>
+											</a>
+									</li>
+								<li class="elementor-icon-list-item elementor-inline-item">
+											<a href="https://manualdareconquista.com.br/politica-de-cookies/?funnel=fn8fb5ff69&amp;step=130&amp;actionId=709962&amp;currentStepId=556080&amp;fbclid=PAb21jcAS-tJ5leHRuA2FlbQEwAGFkaWQBqzcBH1IeAnNydGMGYXBwX2lkDzU2NzA2NzM0MzM1MjQyNwABpxEG4Y72FRtD-UuPgjIah6HjJ-XoNVEnvqBgYkdgYgxaUYwB2imcWjCFc72r_aem_8ciJbjh9bpe_gTq4NQ3Qcg&amp;previousStepId=556048&amp;rda=false&amp;referrer=https%3A%2F%2Finstagram.com%2F&amp;utm_campaign=%5BG%5D%2B%5BWW%5D%2B%5BPERPETUO%5D%2B%5BVENDA%5D%2B%5BGR-PAGE-39%5D%2B%5BPAGINA%5D%2B%5BCAMP53523%5D%2B%5BCBO%5D%2B%5BVOLUME%5D%2B%5B1-1-6%5D%2B-%2B23%2F06%2F26%7C120250292637540418&amp;utm_content=ADS011-VENDA-GR-PAGE-39-GABRIEL%7C120250292852400418&amp;utm_id=120250292637540418&amp;utm_medium=%5BADVANTAGE%5D%7C120250292637600418&amp;utm_source=FB&amp;utm_term=Instagram_Feed&amp;sck=1783714201924_17837142257415" target="_blank">
+
+											<span class="elementor-icon-list-text">Política de Cookies</span>
+											</a>
+									</li>
+						</ul>
+						</div>
+				<div class="elementor-element elementor-element-1438e41 elementor-widget-tablet__width-initial elementor-mobile-align-center elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="1438e41" data-element_type="widget" data-e-type="widget" data-widget_type="icon-list.default">
+							<ul class="elementor-icon-list-items">
+							<li class="elementor-icon-list-item">
+										<span class="elementor-icon-list-text">SUPORTE</span>
+									</li>
+								<li class="elementor-icon-list-item">
+										<span class="elementor-icon-list-text">atendimento@sntreinamentos.com.br</span>
+									</li>
+						</ul>
+						</div>
+				<div class="elementor-element elementor-element-5cff21d elementor-widget__width-initial elementor-widget elementor-widget-heading" data-id="5cff21d" data-element_type="widget" data-e-type="widget" data-widget_type="heading.default">
+					<h2 class="elementor-heading-title elementor-size-default">© 2026 Grupo SN | CNPJ: 38.092.064/0001-32</h2>				</div>
+				<div class="elementor-element elementor-element-a3602d6 elementor-widget__width-initial elementor-absolute elementor-widget elementor-widget-html" data-id="a3602d6" data-element_type="widget" data-e-type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="html.default">
+					<script src="data:text/javascript;base64,CmNvbnN0IGVsZW1lbnRvc1RvZ2dsZSA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3JBbGwoJy5lbGVtZW50b3ItdG9nZ2xlLXRpdGxlJyk7CgplbGVtZW50b3NUb2dnbGUuZm9yRWFjaChlbGVtZW50byA9PiB7CiAgICBjb25zdCBub3ZvVG9nZ2xlID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnc3BhbicpOwogICAgbm92b1RvZ2dsZS5pbm5lckhUTUwgPSBlbGVtZW50by5pbm5lckhUTUw7CiAgICBub3ZvVG9nZ2xlLmNsYXNzTGlzdC5hZGQoImVsZW1lbnRvci10b2dnbGUtdGl0bGUiKTsKICAgIGVsZW1lbnRvLnBhcmVudE5vZGUucmVwbGFjZUNoaWxkKG5vdm9Ub2dnbGUsIGVsZW1lbnRvKTsKfSk7Cg==" data-rocket-status="executed">
+const elementosToggle = document.querySelectorAll('.elementor-toggle-title');
+
+elementosToggle.forEach(elemento => {
+    const novoToggle = document.createElement('span');
+    novoToggle.innerHTML = elemento.innerHTML;
+    novoToggle.classList.add("elementor-toggle-title");
+    elemento.parentNode.replaceChild(novoToggle, elemento);
+});
+</script>
+<script src="data:text/javascript;base64,CihmdW5jdGlvbigpIHsKY29uc3QgdXRtUGFyYW1RdWVyeVN0cmluZyA9IG5ldyBVUkxTZWFyY2hQYXJhbXMod2luZG93LmxvY2F0aW9uLnNlYXJjaCk7CmlmICh1dG1QYXJhbVF1ZXJ5U3RyaW5nLnRvU3RyaW5nKCkpIHsKdmFyIG5hdkxpbmtzID0gZG9jdW1lbnQucXVlcnlTZWxlY3RvckFsbCgnYScpOwpuYXZMaW5rcy5mb3JFYWNoKGZ1bmN0aW9uKGl0ZW0pIHsKaWYgKGl0ZW0uaHJlZi5pbmRleE9mKCdwYWd0cnVzdC5jb20uYnInKSAhPT0gLTEpIHsKaWYgKGl0ZW0uaHJlZi5pbmRleE9mKCc/JykgPT09IC0xKSB7Cml0ZW0uaHJlZiArPSAnPycgKyB1dG1QYXJhbVF1ZXJ5U3RyaW5nLnRvU3RyaW5nKCk7Cn0gZWxzZSB7Cml0ZW0uaHJlZiArPSAnJicgKyB1dG1QYXJhbVF1ZXJ5U3RyaW5nLnRvU3RyaW5nKCk7Cn0KfQp9KTsKfQp9KSgpOwo=" data-rocket-status="executed">
+(function() {
+const utmParamQueryString = new URLSearchParams(window.location.search);
+if (utmParamQueryString.toString()) {
+var navLinks = document.querySelectorAll('a');
+navLinks.forEach(function(item) {
+if (item.href.indexOf('pagtrust.com.br') !== -1) {
+if (item.href.indexOf('?') === -1) {
+item.href += '?' + utmParamQueryString.toString();
+} else {
+item.href += '&' + utmParamQueryString.toString();
+}
+}
+});
+}
+})();
+</script>				</div>
+					</div>
+				</div>
+				</div>
+		<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/hello-elementor/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="rocket-browser-checker-js-after" src="data:text/javascript;base64,CiJ1c2Ugc3RyaWN0Ijt2YXIgX2NyZWF0ZUNsYXNzPWZ1bmN0aW9uKCl7ZnVuY3Rpb24gZGVmaW5lUHJvcGVydGllcyh0YXJnZXQscHJvcHMpe2Zvcih2YXIgaT0wO2k8cHJvcHMubGVuZ3RoO2krKyl7dmFyIGRlc2NyaXB0b3I9cHJvcHNbaV07ZGVzY3JpcHRvci5lbnVtZXJhYmxlPWRlc2NyaXB0b3IuZW51bWVyYWJsZXx8ITEsZGVzY3JpcHRvci5jb25maWd1cmFibGU9ITAsInZhbHVlImluIGRlc2NyaXB0b3ImJihkZXNjcmlwdG9yLndyaXRhYmxlPSEwKSxPYmplY3QuZGVmaW5lUHJvcGVydHkodGFyZ2V0LGRlc2NyaXB0b3Iua2V5LGRlc2NyaXB0b3IpfX1yZXR1cm4gZnVuY3Rpb24oQ29uc3RydWN0b3IscHJvdG9Qcm9wcyxzdGF0aWNQcm9wcyl7cmV0dXJuIHByb3RvUHJvcHMmJmRlZmluZVByb3BlcnRpZXMoQ29uc3RydWN0b3IucHJvdG90eXBlLHByb3RvUHJvcHMpLHN0YXRpY1Byb3BzJiZkZWZpbmVQcm9wZXJ0aWVzKENvbnN0cnVjdG9yLHN0YXRpY1Byb3BzKSxDb25zdHJ1Y3Rvcn19KCk7ZnVuY3Rpb24gX2NsYXNzQ2FsbENoZWNrKGluc3RhbmNlLENvbnN0cnVjdG9yKXtpZighKGluc3RhbmNlIGluc3RhbmNlb2YgQ29uc3RydWN0b3IpKXRocm93IG5ldyBUeXBlRXJyb3IoIkNhbm5vdCBjYWxsIGEgY2xhc3MgYXMgYSBmdW5jdGlvbiIpfXZhciBSb2NrZXRCcm93c2VyQ29tcGF0aWJpbGl0eUNoZWNrZXI9ZnVuY3Rpb24oKXtmdW5jdGlvbiBSb2NrZXRCcm93c2VyQ29tcGF0aWJpbGl0eUNoZWNrZXIob3B0aW9ucyl7X2NsYXNzQ2FsbENoZWNrKHRoaXMsUm9ja2V0QnJvd3NlckNvbXBhdGliaWxpdHlDaGVja2VyKSx0aGlzLnBhc3NpdmVTdXBwb3J0ZWQ9ITEsdGhpcy5fY2hlY2tQYXNzaXZlT3B0aW9uKHRoaXMpLHRoaXMub3B0aW9ucz0hIXRoaXMucGFzc2l2ZVN1cHBvcnRlZCYmb3B0aW9uc31yZXR1cm4gX2NyZWF0ZUNsYXNzKFJvY2tldEJyb3dzZXJDb21wYXRpYmlsaXR5Q2hlY2tlcixbe2tleToiX2NoZWNrUGFzc2l2ZU9wdGlvbiIsdmFsdWU6ZnVuY3Rpb24oc2VsZil7dHJ5e3ZhciBvcHRpb25zPXtnZXQgcGFzc2l2ZSgpe3JldHVybiEoc2VsZi5wYXNzaXZlU3VwcG9ydGVkPSEwKX19O3dpbmRvdy5hZGRFdmVudExpc3RlbmVyKCJ0ZXN0IixudWxsLG9wdGlvbnMpLHdpbmRvdy5yZW1vdmVFdmVudExpc3RlbmVyKCJ0ZXN0IixudWxsLG9wdGlvbnMpfWNhdGNoKGVycil7c2VsZi5wYXNzaXZlU3VwcG9ydGVkPSExfX19LHtrZXk6ImluaXRSZXF1ZXN0SWRsZUNhbGxiYWNrIix2YWx1ZTpmdW5jdGlvbigpeyExIGluIHdpbmRvdyYmKHdpbmRvdy5yZXF1ZXN0SWRsZUNhbGxiYWNrPWZ1bmN0aW9uKGNiKXt2YXIgc3RhcnQ9RGF0ZS5ub3coKTtyZXR1cm4gc2V0VGltZW91dChmdW5jdGlvbigpe2NiKHtkaWRUaW1lb3V0OiExLHRpbWVSZW1haW5pbmc6ZnVuY3Rpb24oKXtyZXR1cm4gTWF0aC5tYXgoMCw1MC0oRGF0ZS5ub3coKS1zdGFydCkpfX0pfSwxKX0pLCExIGluIHdpbmRvdyYmKHdpbmRvdy5jYW5jZWxJZGxlQ2FsbGJhY2s9ZnVuY3Rpb24oaWQpe3JldHVybiBjbGVhclRpbWVvdXQoaWQpfSl9fSx7a2V5OiJpc0RhdGFTYXZlck1vZGVPbiIsdmFsdWU6ZnVuY3Rpb24oKXtyZXR1cm4iY29ubmVjdGlvbiJpbiBuYXZpZ2F0b3ImJiEwPT09bmF2aWdhdG9yLmNvbm5lY3Rpb24uc2F2ZURhdGF9fSx7a2V5OiJzdXBwb3J0c0xpbmtQcmVmZXRjaCIsdmFsdWU6ZnVuY3Rpb24oKXt2YXIgZWxlbT1kb2N1bWVudC5jcmVhdGVFbGVtZW50KCJsaW5rIik7cmV0dXJuIGVsZW0ucmVsTGlzdCYmZWxlbS5yZWxMaXN0LnN1cHBvcnRzJiZlbGVtLnJlbExpc3Quc3VwcG9ydHMoInByZWZldGNoIikmJndpbmRvdy5JbnRlcnNlY3Rpb25PYnNlcnZlciYmImlzSW50ZXJzZWN0aW5nImluIEludGVyc2VjdGlvbk9ic2VydmVyRW50cnkucHJvdG90eXBlfX0se2tleToiaXNTbG93Q29ubmVjdGlvbiIsdmFsdWU6ZnVuY3Rpb24oKXtyZXR1cm4iY29ubmVjdGlvbiJpbiBuYXZpZ2F0b3ImJiJlZmZlY3RpdmVUeXBlImluIG5hdmlnYXRvci5jb25uZWN0aW9uJiYoIjJnIj09PW5hdmlnYXRvci5jb25uZWN0aW9uLmVmZmVjdGl2ZVR5cGV8fCJzbG93LTJnIj09PW5hdmlnYXRvci5jb25uZWN0aW9uLmVmZmVjdGl2ZVR5cGUpfX1dKSxSb2NrZXRCcm93c2VyQ29tcGF0aWJpbGl0eUNoZWNrZXJ9KCk7Ci8vIyBzb3VyY2VVUkw9cm9ja2V0LWJyb3dzZXItY2hlY2tlci1qcy1hZnRlcgo=" data-rocket-status="executed">
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+//# sourceURL=rocket-browser-checker-js-after
+</script>
+<script id="rocket-preload-links-js-extra">
+var RocketPreloadLinksConfig = {"excludeUris":"/(?:.+/)?feed(?:/(?:.+/?)?)?$|/(?:.+/)?embed/|/(index.php/)?(.*)wp-json(/.*|$)|/refer/|/go/|/recommend/|/recommends/","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php|html|htm","siteUrl":"https://grimorioproibido.com.br","onHoverDelay":"100","rateThrottle":"3"};
+//# sourceURL=rocket-preload-links-js-extra
+</script>
+<script id="rocket-preload-links-js-after" src="data:text/javascript;base64,CihmdW5jdGlvbigpIHsKInVzZSBzdHJpY3QiO3ZhciByPSJmdW5jdGlvbiI9PXR5cGVvZiBTeW1ib2wmJiJzeW1ib2wiPT10eXBlb2YgU3ltYm9sLml0ZXJhdG9yP2Z1bmN0aW9uKGUpe3JldHVybiB0eXBlb2YgZX06ZnVuY3Rpb24oZSl7cmV0dXJuIGUmJiJmdW5jdGlvbiI9PXR5cGVvZiBTeW1ib2wmJmUuY29uc3RydWN0b3I9PT1TeW1ib2wmJmUhPT1TeW1ib2wucHJvdG90eXBlPyJzeW1ib2wiOnR5cGVvZiBlfSxlPWZ1bmN0aW9uKCl7ZnVuY3Rpb24gaShlLHQpe2Zvcih2YXIgbj0wO248dC5sZW5ndGg7bisrKXt2YXIgaT10W25dO2kuZW51bWVyYWJsZT1pLmVudW1lcmFibGV8fCExLGkuY29uZmlndXJhYmxlPSEwLCJ2YWx1ZSJpbiBpJiYoaS53cml0YWJsZT0hMCksT2JqZWN0LmRlZmluZVByb3BlcnR5KGUsaS5rZXksaSl9fXJldHVybiBmdW5jdGlvbihlLHQsbil7cmV0dXJuIHQmJmkoZS5wcm90b3R5cGUsdCksbiYmaShlLG4pLGV9fSgpO2Z1bmN0aW9uIGkoZSx0KXtpZighKGUgaW5zdGFuY2VvZiB0KSl0aHJvdyBuZXcgVHlwZUVycm9yKCJDYW5ub3QgY2FsbCBhIGNsYXNzIGFzIGEgZnVuY3Rpb24iKX12YXIgdD1mdW5jdGlvbigpe2Z1bmN0aW9uIG4oZSx0KXtpKHRoaXMsbiksdGhpcy5icm93c2VyPWUsdGhpcy5jb25maWc9dCx0aGlzLm9wdGlvbnM9dGhpcy5icm93c2VyLm9wdGlvbnMsdGhpcy5wcmVmZXRjaGVkPW5ldyBTZXQsdGhpcy5ldmVudFRpbWU9bnVsbCx0aGlzLnRocmVzaG9sZD0xMTExLHRoaXMubnVtT25Ib3Zlcj0wfXJldHVybiBlKG4sW3trZXk6ImluaXQiLHZhbHVlOmZ1bmN0aW9uKCl7IXRoaXMuYnJvd3Nlci5zdXBwb3J0c0xpbmtQcmVmZXRjaCgpfHx0aGlzLmJyb3dzZXIuaXNEYXRhU2F2ZXJNb2RlT24oKXx8dGhpcy5icm93c2VyLmlzU2xvd0Nvbm5lY3Rpb24oKXx8KHRoaXMucmVnZXg9e2V4Y2x1ZGVVcmlzOlJlZ0V4cCh0aGlzLmNvbmZpZy5leGNsdWRlVXJpcywiaSIpLGltYWdlczpSZWdFeHAoIi4oIit0aGlzLmNvbmZpZy5pbWFnZUV4dCsiKSQiLCJpIiksZmlsZUV4dDpSZWdFeHAoIi4oIit0aGlzLmNvbmZpZy5maWxlRXh0KyIpJCIsImkiKX0sdGhpcy5faW5pdExpc3RlbmVycyh0aGlzKSl9fSx7a2V5OiJfaW5pdExpc3RlbmVycyIsdmFsdWU6ZnVuY3Rpb24oZSl7LTE8dGhpcy5jb25maWcub25Ib3ZlckRlbGF5JiZkb2N1bWVudC5hZGRFdmVudExpc3RlbmVyKCJtb3VzZW92ZXIiLGUubGlzdGVuZXIuYmluZChlKSxlLmxpc3RlbmVyT3B0aW9ucyksZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcigibW91c2Vkb3duIixlLmxpc3RlbmVyLmJpbmQoZSksZS5saXN0ZW5lck9wdGlvbnMpLGRvY3VtZW50LmFkZEV2ZW50TGlzdGVuZXIoInRvdWNoc3RhcnQiLGUubGlzdGVuZXIuYmluZChlKSxlLmxpc3RlbmVyT3B0aW9ucyl9fSx7a2V5OiJsaXN0ZW5lciIsdmFsdWU6ZnVuY3Rpb24oZSl7dmFyIHQ9ZS50YXJnZXQuY2xvc2VzdCgiYSIpLG49dGhpcy5fcHJlcGFyZVVybCh0KTtpZihudWxsIT09bilzd2l0Y2goZS50eXBlKXtjYXNlIm1vdXNlZG93biI6Y2FzZSJ0b3VjaHN0YXJ0Ijp0aGlzLl9hZGRQcmVmZXRjaExpbmsobik7YnJlYWs7Y2FzZSJtb3VzZW92ZXIiOnRoaXMuX2Vhcmx5UHJlZmV0Y2godCxuLCJtb3VzZW91dCIpfX19LHtrZXk6Il9lYXJseVByZWZldGNoIix2YWx1ZTpmdW5jdGlvbih0LGUsbil7dmFyIGk9dGhpcyxyPXNldFRpbWVvdXQoZnVuY3Rpb24oKXtpZihyPW51bGwsMD09PWkubnVtT25Ib3ZlcilzZXRUaW1lb3V0KGZ1bmN0aW9uKCl7cmV0dXJuIGkubnVtT25Ib3Zlcj0wfSwxZTMpO2Vsc2UgaWYoaS5udW1PbkhvdmVyPmkuY29uZmlnLnJhdGVUaHJvdHRsZSlyZXR1cm47aS5udW1PbkhvdmVyKyssaS5fYWRkUHJlZmV0Y2hMaW5rKGUpfSx0aGlzLmNvbmZpZy5vbkhvdmVyRGVsYXkpO3QuYWRkRXZlbnRMaXN0ZW5lcihuLGZ1bmN0aW9uIGUoKXt0LnJlbW92ZUV2ZW50TGlzdGVuZXIobixlLHtwYXNzaXZlOiEwfSksbnVsbCE9PXImJihjbGVhclRpbWVvdXQocikscj1udWxsKX0se3Bhc3NpdmU6ITB9KX19LHtrZXk6Il9hZGRQcmVmZXRjaExpbmsiLHZhbHVlOmZ1bmN0aW9uKGkpe3JldHVybiB0aGlzLnByZWZldGNoZWQuYWRkKGkuaHJlZiksbmV3IFByb21pc2UoZnVuY3Rpb24oZSx0KXt2YXIgbj1kb2N1bWVudC5jcmVhdGVFbGVtZW50KCJsaW5rIik7bi5yZWw9InByZWZldGNoIixuLmhyZWY9aS5ocmVmLG4ub25sb2FkPWUsbi5vbmVycm9yPXQsZG9jdW1lbnQuaGVhZC5hcHBlbmRDaGlsZChuKX0pLmNhdGNoKGZ1bmN0aW9uKCl7fSl9fSx7a2V5OiJfcHJlcGFyZVVybCIsdmFsdWU6ZnVuY3Rpb24oZSl7aWYobnVsbD09PWV8fCJvYmplY3QiIT09KHZvaWQgMD09PWU/InVuZGVmaW5lZCI6cihlKSl8fCExIGluIGV8fC0xPT09WyJodHRwOiIsImh0dHBzOiJdLmluZGV4T2YoZS5wcm90b2NvbCkpcmV0dXJuIG51bGw7dmFyIHQ9ZS5ocmVmLnN1YnN0cmluZygwLHRoaXMuY29uZmlnLnNpdGVVcmwubGVuZ3RoKSxuPXRoaXMuX2dldFBhdGhuYW1lKGUuaHJlZix0KSxpPXtvcmlnaW5hbDplLmhyZWYscHJvdG9jb2w6ZS5wcm90b2NvbCxvcmlnaW46dCxwYXRobmFtZTpuLGhyZWY6dCtufTtyZXR1cm4gdGhpcy5faXNMaW5rT2soaSk/aTpudWxsfX0se2tleToiX2dldFBhdGhuYW1lIix2YWx1ZTpmdW5jdGlvbihlLHQpe3ZhciBuPXQ/ZS5zdWJzdHJpbmcodGhpcy5jb25maWcuc2l0ZVVybC5sZW5ndGgpOmU7cmV0dXJuIG4uc3RhcnRzV2l0aCgiLyIpfHwobj0iLyIrbiksdGhpcy5fc2hvdWxkQWRkVHJhaWxpbmdTbGFzaChuKT9uKyIvIjpufX0se2tleToiX3Nob3VsZEFkZFRyYWlsaW5nU2xhc2giLHZhbHVlOmZ1bmN0aW9uKGUpe3JldHVybiB0aGlzLmNvbmZpZy51c2VzVHJhaWxpbmdTbGFzaCYmIWUuZW5kc1dpdGgoIi8iKSYmIXRoaXMucmVnZXguZmlsZUV4dC50ZXN0KGUpfX0se2tleToiX2lzTGlua09rIix2YWx1ZTpmdW5jdGlvbihlKXtyZXR1cm4gbnVsbCE9PWUmJiJvYmplY3QiPT09KHZvaWQgMD09PWU/InVuZGVmaW5lZCI6cihlKSkmJighdGhpcy5wcmVmZXRjaGVkLmhhcyhlLmhyZWYpJiZlLm9yaWdpbj09PXRoaXMuY29uZmlnLnNpdGVVcmwmJi0xPT09ZS5ocmVmLmluZGV4T2YoIj8iKSYmLTE9PT1lLmhyZWYuaW5kZXhPZigiIyIpJiYhdGhpcy5yZWdleC5leGNsdWRlVXJpcy50ZXN0KGUuaHJlZikmJiF0aGlzLnJlZ2V4LmltYWdlcy50ZXN0KGUuaHJlZikpfX1dLFt7a2V5OiJydW4iLHZhbHVlOmZ1bmN0aW9uKCl7InVuZGVmaW5lZCIhPXR5cGVvZiBSb2NrZXRQcmVsb2FkTGlua3NDb25maWcmJm5ldyBuKG5ldyBSb2NrZXRCcm93c2VyQ29tcGF0aWJpbGl0eUNoZWNrZXIoe2NhcHR1cmU6ITAscGFzc2l2ZTohMH0pLFJvY2tldFByZWxvYWRMaW5rc0NvbmZpZykuaW5pdCgpfX1dKSxufSgpO3QucnVuKCk7Cn0oKSk7CgovLyMgc291cmNlVVJMPXJvY2tldC1wcmVsb2FkLWxpbmtzLWpzLWFmdGVyCg==" data-rocket-status="executed">
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+
+//# sourceURL=rocket-preload-links-js-after
+</script>
+<script id="rocket_lazyload_css-js-extra">
+var rocket_lazyload_css_data = {"threshold":"300"};
+//# sourceURL=rocket_lazyload_css-js-extra
+</script>
+<script id="rocket_lazyload_css-js-after">
+!function o(n,c,a){function u(t,e){if(!c[t]){if(!n[t]){var r="function"==typeof require&&require;if(!e&&r)return r(t,!0);if(s)return s(t,!0);throw(e=new Error("Cannot find module '"+t+"'")).code="MODULE_NOT_FOUND",e}r=c[t]={exports:{}},n[t][0].call(r.exports,function(e){return u(n[t][1][e]||e)},r,r.exports,o,n,c,a)}return c[t].exports}for(var s="function"==typeof require&&require,e=0;e<a.length;e++)u(a[e]);return u}({1:[function(e,t,r){"use strict";{const c="undefined"==typeof rocket_pairs?[]:rocket_pairs,a=(("undefined"==typeof rocket_excluded_pairs?[]:rocket_excluded_pairs).map(t=>{var e=t.selector;document.querySelectorAll(e).forEach(e=>{e.setAttribute("data-rocket-lazy-bg-"+t.hash,"excluded")})}),document.querySelector("#wpr-lazyload-bg-container"));var o=rocket_lazyload_css_data.threshold||300;const u=new IntersectionObserver(e=>{e.forEach(t=>{t.isIntersecting&&c.filter(e=>t.target.matches(e.selector)).map(t=>{var e;t&&((e=document.createElement("style")).textContent=t.style,a.insertAdjacentElement("afterend",e),t.elements.forEach(e=>{u.unobserve(e),e.setAttribute("data-rocket-lazy-bg-"+t.hash,"loaded")}))})})},{rootMargin:o+"px"});function n(){0<(0<arguments.length&&void 0!==arguments[0]?arguments[0]:[]).length&&c.forEach(t=>{try{document.querySelectorAll(t.selector).forEach(e=>{"loaded"!==e.getAttribute("data-rocket-lazy-bg-"+t.hash)&&"excluded"!==e.getAttribute("data-rocket-lazy-bg-"+t.hash)&&(u.observe(e),(t.elements||=[]).push(e))})}catch(e){console.error(e)}})}n(),function(){const r=window.MutationObserver;return function(e,t){if(e&&1===e.nodeType)return(t=new r(t)).observe(e,{attributes:!0,childList:!0,subtree:!0}),t}}()(document.querySelector("body"),n)}},{}]},{},[1]);
+//# sourceURL=rocket_lazyload_css-js-after
+</script>
+<script data-minify="1" id="hello-theme-frontend-js" fetchpriority="high" src="./Grimório Proibido – V3 – Grimório Proibido_files/hello-frontend.js.baixados" data-rocket-status="executed"></script>
+<script id="elementor-webpack-runtime-js" fetchpriority="high" src="./Grimório Proibido – V3 – Grimório Proibido_files/webpack.runtime.min.js.baixados" data-rocket-status="executed"></script>
+<script id="elementor-frontend-modules-js" fetchpriority="high" src="./Grimório Proibido – V3 – Grimório Proibido_files/frontend-modules.min.js.baixados" data-rocket-status="executed"></script>
+<script id="jquery-ui-core-js" fetchpriority="high" src="./Grimório Proibido – V3 – Grimório Proibido_files/core.min.js.baixados" data-rocket-status="executed"></script>
+<script id="elementor-frontend-js-before" src="data:text/javascript;base64,CnZhciBlbGVtZW50b3JGcm9udGVuZENvbmZpZyA9IHsiZW52aXJvbm1lbnRNb2RlIjp7ImVkaXQiOmZhbHNlLCJ3cFByZXZpZXciOmZhbHNlLCJpc1NjcmlwdERlYnVnIjpmYWxzZX0sImkxOG4iOnsic2hhcmVPbkZhY2Vib29rIjoiQ29tcGFydGlsaGFyIG5vIEZhY2Vib29rIiwic2hhcmVPblR3aXR0ZXIiOiJDb21wYXJ0aWxoYXIgbm8gVHdpdHRlciIsInBpbkl0IjoiRml4YXIiLCJkb3dubG9hZCI6IkJhaXhhciIsImRvd25sb2FkSW1hZ2UiOiJCYWl4YXIgaW1hZ2VtIiwiZnVsbHNjcmVlbiI6IlRlbGEgY2hlaWEiLCJ6b29tIjoiWm9vbSIsInNoYXJlIjoiQ29tcGFydGlsaGFyIiwicGxheVZpZGVvIjoiUmVwcm9kdXppciB2XHUwMGVkZGVvIiwicHJldmlvdXMiOiJBbnRlcmlvciIsIm5leHQiOiJQclx1MDBmM3hpbW8iLCJjbG9zZSI6IkZlY2hhciIsImExMXlDYXJvdXNlbFByZXZTbGlkZU1lc3NhZ2UiOiJTbGlkZSBhbnRlcmlvciIsImExMXlDYXJvdXNlbE5leHRTbGlkZU1lc3NhZ2UiOiJQclx1MDBmM3hpbW8gc2xpZGUiLCJhMTF5Q2Fyb3VzZWxGaXJzdFNsaWRlTWVzc2FnZSI6IkVzdGUgXHUwMGU5IG8gcHJpbWVpcm8gc2xpZGUiLCJhMTF5Q2Fyb3VzZWxMYXN0U2xpZGVNZXNzYWdlIjoiRXN0ZSBcdTAwZTkgbyBcdTAwZmFsdGltbyBzbGlkZSIsImExMXlDYXJvdXNlbFBhZ2luYXRpb25CdWxsZXRNZXNzYWdlIjoiSXIgcGFyYSBvIHNsaWRlIn0sImlzX3J0bCI6ZmFsc2UsImJyZWFrcG9pbnRzIjp7InhzIjowLCJzbSI6NDgwLCJtZCI6NzY4LCJsZyI6MTAyNSwieGwiOjE0NDAsInh4bCI6MTYwMH0sInJlc3BvbnNpdmUiOnsiYnJlYWtwb2ludHMiOnsibW9iaWxlIjp7ImxhYmVsIjoiRGlzcG9zaXRpdm9zIG1cdTAwZjN2ZWlzIG5vIG1vZG8gcmV0cmF0byIsInZhbHVlIjo3NjcsImRlZmF1bHRfdmFsdWUiOjc2NywiZGlyZWN0aW9uIjoibWF4IiwiaXNfZW5hYmxlZCI6dHJ1ZX0sIm1vYmlsZV9leHRyYSI6eyJsYWJlbCI6IkRpc3Bvc2l0aXZvcyBtXHUwMGYzdmVpcyBubyBtb2RvIHBhaXNhZ2VtIiwidmFsdWUiOjg4MCwiZGVmYXVsdF92YWx1ZSI6ODgwLCJkaXJlY3Rpb24iOiJtYXgiLCJpc19lbmFibGVkIjpmYWxzZX0sInRhYmxldCI6eyJsYWJlbCI6IlRhYmxldCBubyBtb2RvIHJldHJhdG8iLCJ2YWx1ZSI6MTAyNCwiZGVmYXVsdF92YWx1ZSI6MTAyNCwiZGlyZWN0aW9uIjoibWF4IiwiaXNfZW5hYmxlZCI6dHJ1ZX0sInRhYmxldF9leHRyYSI6eyJsYWJlbCI6IlRhYmxldCBubyBtb2RvIHBhaXNhZ2VtIiwidmFsdWUiOjEyMDAsImRlZmF1bHRfdmFsdWUiOjEyMDAsImRpcmVjdGlvbiI6Im1heCIsImlzX2VuYWJsZWQiOmZhbHNlfSwibGFwdG9wIjp7ImxhYmVsIjoiTm90ZWJvb2siLCJ2YWx1ZSI6MTM2NiwiZGVmYXVsdF92YWx1ZSI6MTM2NiwiZGlyZWN0aW9uIjoibWF4IiwiaXNfZW5hYmxlZCI6ZmFsc2V9LCJ3aWRlc2NyZWVuIjp7ImxhYmVsIjoiVGVsYSBhbXBsYSAod2lkZXNjcmVlbikiLCJ2YWx1ZSI6MjQwMCwiZGVmYXVsdF92YWx1ZSI6MjQwMCwiZGlyZWN0aW9uIjoibWluIiwiaXNfZW5hYmxlZCI6ZmFsc2V9fSwiaGFzQ3VzdG9tQnJlYWtwb2ludHMiOmZhbHNlfSwidmVyc2lvbiI6IjQuMS4yIiwiaXNfc3RhdGljIjpmYWxzZSwiZXhwZXJpbWVudGFsRmVhdHVyZXMiOnsiZV9mb250X2ljb25fc3ZnIjp0cnVlLCJhZGRpdGlvbmFsX2N1c3RvbV9icmVha3BvaW50cyI6dHJ1ZSwiY29udGFpbmVyIjp0cnVlLCJlX29wdGltaXplZF9tYXJrdXAiOnRydWUsInRoZW1lX2J1aWxkZXJfdjIiOnRydWUsImhlbGxvLXRoZW1lLWhlYWRlci1mb290ZXIiOnRydWUsImVfcHJvX2ZyZWVfdHJpYWxfcG9wdXAiOnRydWUsIm5lc3RlZC1lbGVtZW50cyI6dHJ1ZSwiZ2xvYmFsX2NsYXNzZXNfc2hvdWxkX2VuZm9yY2VfY2FwYWJpbGl0aWVzIjp0cnVlLCJlX29wdF9pbl92NF9wYWdlIjp0cnVlLCJlX2ludGVyYWN0aW9ucyI6dHJ1ZSwiZV93aWRnZXRfY3JlYXRpb24iOnRydWUsImltcG9ydC1leHBvcnQtY3VzdG9taXphdGlvbiI6dHJ1ZSwiZV9wcm9fYXRvbWljX2Zvcm0iOnRydWUsIm1lZ2EtbWVudSI6dHJ1ZSwiZV9wcm9fdmFyaWFibGVzIjp0cnVlLCJlX3Byb19pbnRlcmFjdGlvbnMiOnRydWV9LCJ1cmxzIjp7ImFzc2V0cyI6Imh0dHBzOlwvXC9ncmltb3Jpb3Byb2liaWRvLmNvbS5iclwvd3AtY29udGVudFwvcGx1Z2luc1wvZWxlbWVudG9yXC9hc3NldHNcLyIsImFqYXh1cmwiOiJodHRwczpcL1wvZ3JpbW9yaW9wcm9pYmlkby5jb20uYnJcL3dwLWFkbWluXC9hZG1pbi1hamF4LnBocCIsInVwbG9hZFVybCI6Imh0dHBzOlwvXC9ncmltb3Jpb3Byb2liaWRvLmNvbS5iclwvd3AtY29udGVudFwvdXBsb2FkcyJ9LCJub25jZXMiOnsiZmxvYXRpbmdCdXR0b25zQ2xpY2tUcmFja2luZyI6IjJkOWY3OTMwMDkiLCJhdG9taWNGb3Jtc1NlbmRGb3JtIjoiZTczODNmNWU5YiJ9LCJzd2lwZXJDbGFzcyI6InN3aXBlciIsInNldHRpbmdzIjp7InBhZ2UiOltdLCJlZGl0b3JQcmVmZXJlbmNlcyI6W119LCJraXQiOnsiYWN0aXZlX2JyZWFrcG9pbnRzIjpbInZpZXdwb3J0X21vYmlsZSIsInZpZXdwb3J0X3RhYmxldCJdLCJnbG9iYWxfaW1hZ2VfbGlnaHRib3giOiJ5ZXMiLCJsaWdodGJveF9lbmFibGVfY291bnRlciI6InllcyIsImxpZ2h0Ym94X2VuYWJsZV9mdWxsc2NyZWVuIjoieWVzIiwibGlnaHRib3hfZW5hYmxlX3pvb20iOiJ5ZXMiLCJsaWdodGJveF9lbmFibGVfc2hhcmUiOiJ5ZXMiLCJsaWdodGJveF90aXRsZV9zcmMiOiJ0aXRsZSIsImxpZ2h0Ym94X2Rlc2NyaXB0aW9uX3NyYyI6ImRlc2NyaXB0aW9uIiwiaGVsbG9faGVhZGVyX2xvZ29fdHlwZSI6InRpdGxlIiwiaGVsbG9fZm9vdGVyX2xvZ29fdHlwZSI6ImxvZ28ifSwicG9zdCI6eyJpZCI6Mjc0LCJ0aXRsZSI6IkdyaW0lQzMlQjNyaW8lMjBQcm9pYmlkbyUyMCVFMiU4MCU5MyUyMFYzJTIwJUUyJTgwJTkzJTIwR3JpbSVDMyVCM3JpbyUyMFByb2liaWRvIiwiZXhjZXJwdCI6IiIsImZlYXR1cmVkSW1hZ2UiOmZhbHNlfX07Ci8vIyBzb3VyY2VVUkw9ZWxlbWVudG9yLWZyb250ZW5kLWpzLWJlZm9yZQo=" data-rocket-status="executed">
+var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false,"isScriptDebug":false},"i18n":{"shareOnFacebook":"Compartilhar no Facebook","shareOnTwitter":"Compartilhar no Twitter","pinIt":"Fixar","download":"Baixar","downloadImage":"Baixar imagem","fullscreen":"Tela cheia","zoom":"Zoom","share":"Compartilhar","playVideo":"Reproduzir v\u00eddeo","previous":"Anterior","next":"Pr\u00f3ximo","close":"Fechar","a11yCarouselPrevSlideMessage":"Slide anterior","a11yCarouselNextSlideMessage":"Pr\u00f3ximo slide","a11yCarouselFirstSlideMessage":"Este \u00e9 o primeiro slide","a11yCarouselLastSlideMessage":"Este \u00e9 o \u00faltimo slide","a11yCarouselPaginationBulletMessage":"Ir para o slide"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"responsive":{"breakpoints":{"mobile":{"label":"Dispositivos m\u00f3veis no modo retrato","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Dispositivos m\u00f3veis no modo paisagem","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet no modo retrato","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet no modo paisagem","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Notebook","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Tela ampla (widescreen)","value":2400,"default_value":2400,"direction":"min","is_enabled":false}},"hasCustomBreakpoints":false},"version":"4.1.2","is_static":false,"experimentalFeatures":{"e_font_icon_svg":true,"additional_custom_breakpoints":true,"container":true,"e_optimized_markup":true,"theme_builder_v2":true,"hello-theme-header-footer":true,"e_pro_free_trial_popup":true,"nested-elements":true,"global_classes_should_enforce_capabilities":true,"e_opt_in_v4_page":true,"e_interactions":true,"e_widget_creation":true,"import-export-customization":true,"e_pro_atomic_form":true,"mega-menu":true,"e_pro_variables":true,"e_pro_interactions":true},"urls":{"assets":"https:\/\/grimorioproibido.com.br\/wp-content\/plugins\/elementor\/assets\/","ajaxurl":"https:\/\/grimorioproibido.com.br\/wp-admin\/admin-ajax.php","uploadUrl":"https:\/\/grimorioproibido.com.br\/wp-content\/uploads"},"nonces":{"floatingButtonsClickTracking":"2d9f793009","atomicFormsSendForm":"e7383f5e9b"},"swiperClass":"swiper","settings":{"page":[],"editorPreferences":[]},"kit":{"active_breakpoints":["viewport_mobile","viewport_tablet"],"global_image_lightbox":"yes","lightbox_enable_counter":"yes","lightbox_enable_fullscreen":"yes","lightbox_enable_zoom":"yes","lightbox_enable_share":"yes","lightbox_title_src":"title","lightbox_description_src":"description","hello_header_logo_type":"title","hello_footer_logo_type":"logo"},"post":{"id":274,"title":"Grim%C3%B3rio%20Proibido%20%E2%80%93%20V3%20%E2%80%93%20Grim%C3%B3rio%20Proibido","excerpt":"","featuredImage":false}};
+//# sourceURL=elementor-frontend-js-before
+</script>
+<script id="elementor-frontend-js" fetchpriority="high" src="./Grimório Proibido – V3 – Grimório Proibido_files/frontend.min.js.baixados" data-rocket-status="executed"></script>
+<script id="elementor-gallery-js" fetchpriority="high" src="./Grimório Proibido – V3 – Grimório Proibido_files/e-gallery.min.js.baixados" data-rocket-status="executed"></script>
+<script id="elementor-pro-webpack-runtime-js" fetchpriority="high" src="./Grimório Proibido – V3 – Grimório Proibido_files/webpack-pro.runtime.min.js.baixados" data-rocket-status="executed"></script>
+<script id="wp-hooks-js" fetchpriority="high" src="./Grimório Proibido – V3 – Grimório Proibido_files/hooks.min.js.baixados" data-rocket-status="executed"></script>
+<script id="wp-i18n-js" fetchpriority="high" src="./Grimório Proibido – V3 – Grimório Proibido_files/i18n.min.js.baixados" data-rocket-status="executed"></script>
+<script id="wp-i18n-js-after" src="data:text/javascript;base64,CndwLmkxOG4uc2V0TG9jYWxlRGF0YSggeyAndGV4dCBkaXJlY3Rpb25cdTAwMDRsdHInOiBbICdsdHInIF0gfSApOwovLyMgc291cmNlVVJMPXdwLWkxOG4tanMtYWZ0ZXIK" data-rocket-status="executed">
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+//# sourceURL=wp-i18n-js-after
+</script>
+<script id="elementor-pro-frontend-js-before" src="data:text/javascript;base64,CnZhciBFbGVtZW50b3JQcm9Gcm9udGVuZENvbmZpZyA9IHsiYWpheHVybCI6Imh0dHBzOlwvXC9ncmltb3Jpb3Byb2liaWRvLmNvbS5iclwvd3AtYWRtaW5cL2FkbWluLWFqYXgucGhwIiwibm9uY2UiOiIyOGJiNWVmMTA4IiwidXJscyI6eyJhc3NldHMiOiJodHRwczpcL1wvZ3JpbW9yaW9wcm9pYmlkby5jb20uYnJcL3dwLWNvbnRlbnRcL3BsdWdpbnNcL2VsZW1lbnRvci1wcm9cL2Fzc2V0c1wvIiwicmVzdCI6Imh0dHBzOlwvXC9ncmltb3Jpb3Byb2liaWRvLmNvbS5iclwvd3AtanNvblwvIn0sInNldHRpbmdzIjp7ImxhenlfbG9hZF9iYWNrZ3JvdW5kX2ltYWdlcyI6ZmFsc2V9LCJwb3B1cCI6eyJoYXNQb3BVcHMiOmZhbHNlfSwic2hhcmVCdXR0b25zTmV0d29ya3MiOnsiZmFjZWJvb2siOnsidGl0bGUiOiJGYWNlYm9vayIsImhhc19jb3VudGVyIjp0cnVlfSwidHdpdHRlciI6eyJ0aXRsZSI6IlR3aXR0ZXIifSwibGlua2VkaW4iOnsidGl0bGUiOiJMaW5rZWRJbiIsImhhc19jb3VudGVyIjp0cnVlfSwicGludGVyZXN0Ijp7InRpdGxlIjoiUGludGVyZXN0IiwiaGFzX2NvdW50ZXIiOnRydWV9LCJyZWRkaXQiOnsidGl0bGUiOiJSZWRkaXQiLCJoYXNfY291bnRlciI6dHJ1ZX0sInZrIjp7InRpdGxlIjoiVksiLCJoYXNfY291bnRlciI6dHJ1ZX0sIm9kbm9rbGFzc25pa2kiOnsidGl0bGUiOiJPSyIsImhhc19jb3VudGVyIjp0cnVlfSwidHVtYmxyIjp7InRpdGxlIjoiVHVtYmxyIn0sImRpZ2ciOnsidGl0bGUiOiJEaWdnIn0sInNreXBlIjp7InRpdGxlIjoiU2t5cGUifSwic3R1bWJsZXVwb24iOnsidGl0bGUiOiJTdHVtYmxlVXBvbiIsImhhc19jb3VudGVyIjp0cnVlfSwibWl4Ijp7InRpdGxlIjoiTWl4In0sInRlbGVncmFtIjp7InRpdGxlIjoiVGVsZWdyYW0ifSwicG9ja2V0Ijp7InRpdGxlIjoiUG9ja2V0IiwiaGFzX2NvdW50ZXIiOnRydWV9LCJ4aW5nIjp7InRpdGxlIjoiWElORyIsImhhc19jb3VudGVyIjp0cnVlfSwid2hhdHNhcHAiOnsidGl0bGUiOiJXaGF0c0FwcCJ9LCJlbWFpbCI6eyJ0aXRsZSI6IkVtYWlsIn0sInByaW50Ijp7InRpdGxlIjoiUHJpbnQifSwieC10d2l0dGVyIjp7InRpdGxlIjoiWCJ9LCJ0aHJlYWRzIjp7InRpdGxlIjoiVGhyZWFkcyJ9fSwiZmFjZWJvb2tfc2RrIjp7ImxhbmciOiJwdF9CUiIsImFwcF9pZCI6IiJ9LCJsb3R0aWUiOnsiZGVmYXVsdEFuaW1hdGlvblVybCI6Imh0dHBzOlwvXC9ncmltb3Jpb3Byb2liaWRvLmNvbS5iclwvd3AtY29udGVudFwvcGx1Z2luc1wvZWxlbWVudG9yLXByb1wvbW9kdWxlc1wvbG90dGllXC9hc3NldHNcL2FuaW1hdGlvbnNcL2RlZmF1bHQuanNvbiJ9fTsKLy8jIHNvdXJjZVVSTD1lbGVtZW50b3ItcHJvLWZyb250ZW5kLWpzLWJlZm9yZQo=" data-rocket-status="executed">
+var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/grimorioproibido.com.br\/wp-admin\/admin-ajax.php","nonce":"28bb5ef108","urls":{"assets":"https:\/\/grimorioproibido.com.br\/wp-content\/plugins\/elementor-pro\/assets\/","rest":"https:\/\/grimorioproibido.com.br\/wp-json\/"},"settings":{"lazy_load_background_images":false},"popup":{"hasPopUps":false},"shareButtonsNetworks":{"facebook":{"title":"Facebook","has_counter":true},"twitter":{"title":"Twitter"},"linkedin":{"title":"LinkedIn","has_counter":true},"pinterest":{"title":"Pinterest","has_counter":true},"reddit":{"title":"Reddit","has_counter":true},"vk":{"title":"VK","has_counter":true},"odnoklassniki":{"title":"OK","has_counter":true},"tumblr":{"title":"Tumblr"},"digg":{"title":"Digg"},"skype":{"title":"Skype"},"stumbleupon":{"title":"StumbleUpon","has_counter":true},"mix":{"title":"Mix"},"telegram":{"title":"Telegram"},"pocket":{"title":"Pocket","has_counter":true},"xing":{"title":"XING","has_counter":true},"whatsapp":{"title":"WhatsApp"},"email":{"title":"Email"},"print":{"title":"Print"},"x-twitter":{"title":"X"},"threads":{"title":"Threads"}},"facebook_sdk":{"lang":"pt_BR","app_id":""},"lottie":{"defaultAnimationUrl":"https:\/\/grimorioproibido.com.br\/wp-content\/plugins\/elementor-pro\/modules\/lottie\/assets\/animations\/default.json"}};
+//# sourceURL=elementor-pro-frontend-js-before
+</script>
+<script id="elementor-pro-frontend-js" fetchpriority="high" src="./Grimório Proibido – V3 – Grimório Proibido_files/frontend.min(1).js.baixados" data-rocket-status="executed"></script>
+<script id="pro-elements-handlers-js" fetchpriority="high" src="./Grimório Proibido – V3 – Grimório Proibido_files/elements-handlers.min.js.baixados" data-rocket-status="executed"></script>
+<script src="data:text/javascript;base64,KGZ1bmN0aW9uKFAsbCxhLHQsZixvLHIsbSl7aWYobFt0XSlyZXR1cm47bFt0XT0xO2Y9TnVtYmVyKG5ldyBEYXRlKCkpO2E9bC5nZXRFbGVtZW50c0J5VGFnTmFtZSgiYm9keSIpWzBdO2NvbnN0IHM9bC5jcmVhdGVFbGVtZW50KCJzY3JpcHQiKTtzLnNyYz0iaHR0cHM6Ly9zdGF0aWMucGFndHJ1c3QuY29tLmJyL2pzL2xhbmRpbmdQYWdlLm1pbi5qcz89dj0iK2Y7cy5hc3luYz0hMDtzLmRlZmVyPSEwO3MuYWRkRXZlbnRMaXN0ZW5lcigibG9hZCIsKCk9PntpZihQLmxhbmRpbmdQYWdlKXtQLmxhbmRpbmdQYWdlPy4oe3VzZUY6MCxmdW5uZWxEb21haW46bnVsbH0pfX0pO2EuYXBwZW5kQ2hpbGQocyl9KSh3aW5kb3csZG9jdW1lbnQsbnVsbCwibGFuZGluZy1wYWdlLWluaXRpYWxpemVkIik=" data-rocket-status="executed">(function(P,l,a,t,f,o,r,m){if(l[t])return;l[t]=1;f=Number(new Date());a=l.getElementsByTagName("body")[0];const s=l.createElement("script");s.src="https://static.pagtrust.com.br/js/landingPage.min.js?=v="+f;s.async=!0;s.defer=!0;s.addEventListener("load",()=>{if(P.landingPage){P.landingPage?.({useF:0,funnelDomain:null})}});a.appendChild(s)})(window,document,null,"landing-page-initialized")</script>
+<script>window.lazyLoadOptions=[{elements_selector:"img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}},{elements_selector:".rocket-lazyload",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,}];window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(var i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async="" src="./Grimório Proibido – V3 – Grimório Proibido_files/lazyload.min.js.baixados"></script>	<script>(()=>{class RocketElementorPreload{constructor(){this.deviceMode=document.createElement("span"),this.deviceMode.id="elementor-device-mode-wpr",this.deviceMode.setAttribute("class","elementor-screen-only"),document.body.appendChild(this.deviceMode)}t(){let t=getComputedStyle(this.deviceMode,":after").content.replace(/"/g,"");this.animationSettingKeys=this.i(t),document.querySelectorAll(".elementor-invisible[data-settings]").forEach(t=>{const e=t.getBoundingClientRect();if(e.bottom>=0&&e.top<=window.innerHeight)try{this.o(t)}catch(t){}})}o(t){const e=JSON.parse(t.dataset.settings),i=e.m||e.animation_delay||0,n=e[this.animationSettingKeys.find(t=>e[t])];if("none"===n)return void t.classList.remove("elementor-invisible");t.classList.remove(n),this.currentAnimation&&t.classList.remove(this.currentAnimation),this.currentAnimation=n;let o=setTimeout(()=>{t.classList.remove("elementor-invisible"),t.classList.add("animated",n),this.l(t,e)},i);window.addEventListener("rocket-startLoading",function(){clearTimeout(o)})}i(t="mobile"){const e=[""];switch(t){case"mobile":e.unshift("_mobile");case"tablet":e.unshift("_tablet");case"desktop":e.unshift("_desktop")}const i=[];return["animation","_animation"].forEach(t=>{e.forEach(e=>{i.push(t+e)})}),i}l(t,e){this.i().forEach(t=>delete e[t]),t.dataset.settings=JSON.stringify(e)}static run(){const t=new RocketElementorPreload;requestAnimationFrame(t.t.bind(t))}}document.addEventListener("DOMContentLoaded",RocketElementorPreload.run)})();</script><script defer="" src="./Grimório Proibido – V3 – Grimório Proibido_files/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;1788af7b818349b09ebf14cbfc8394d2&quot;,&quot;r&quot;:1,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
+
+
+
+<span id="elementor-device-mode-wpr" class="elementor-screen-only"></span><span id="elementor-device-mode" class="elementor-screen-only"></span><svg style="display: none;" class="e-font-icon-svg-symbols"></svg><script src="./Grimório Proibido – V3 – Grimório Proibido_files/landingPage.min.js.baixados" async="" defer=""></script><script type="text/javascript" id="" charset="">(function(){document.addEventListener("click",function(b){var a=b.target.closest("a");a&&a.href&&(a.href.indexOf("pagtrust.com.br")!==-1||a.href.indexOf("hotmart.com")!==-1)&&(b.preventDefault(),window.dataLayer=window.dataLayer||[],window.dataLayer.push({event:"initiate_checkout",eventCallback:function(){window.location.href=a.href},eventTimeout:2E3}),setTimeout(function(){window.location.href=a.href},2E3))},!0)})();</script><iframe height="0" width="0" style="display: none; visibility: hidden;" src="./Grimório Proibido – V3 – Grimório Proibido_files/saved_resource.html"></iframe><script type="text/javascript" id="" charset="">(function(){function p(b,c){c||(c=window.location.href);b=b.replace(/[\[\]]/g,"\\$\x26");b=new RegExp("[?\x26]"+b+"(\x3d([^\x26#]*)|\x26|#|$)");return(c=b.exec(c))?c[2]?decodeURIComponent(c[2].replace(/\+/g," ")):"":null}function r(b,c,a){var e="/";a*=1E3;var h=new Date,u=h.getTime();h.setTime(u+a);a=h.toUTCString();h=".grimorioproibido.com.br";document.cookie=b+"\x3d"+c+"; expires\x3d"+a+"; path\x3d"+e+"; domain\x3d"+h}function x(b){b+="\x3d";for(var c=document.cookie.split(";"),a=0;a<c.length;a++){for(var e=
+c[a];e.charAt(0)==" ";)e=e.substring(1,e.length);if(e.indexOf(b)==0)return e.substring(b.length,e.length)}return null}function C(){var b=document.createElement("a");b.href=document.referrer;return b.hostname}function y(b,c){try{var a=document.createElement("a");a.href=c;var e=a.search?a.search.substring(1):"";b={};if(e.length>0){var h=e.split("\x26");for(e=0;e<h.length;e++){var u=h[e].split("\x3d");u.length===2&&(b[decodeURIComponent(u[0])]=decodeURIComponent(u[1]))}}h=!1;for(var q in k)k.hasOwnProperty(q)&&
+!b.hasOwnProperty(q)&&(b[q]=k[q],h=!0);!b.hasOwnProperty("sck")&&v.length>0&&(b.sck=v.join("|"),h=!0);if(a.host.indexOf("hotmart.com")!==-1&&!b.hasOwnProperty("xcod")){var t=k.utm_content||"";t&&(b.xcod=[k.utm_source||"",k.utm_campaign||"",k.utm_medium||"",t,k.utm_term||""].join("hQwK21wXxR"),h=!0)}if(h){t="?";h=!0;for(q in b)b.hasOwnProperty(q)&&(h||(t+="\x26"),t+=encodeURIComponent(q)+"\x3d"+encodeURIComponent(b[q]),h=!1);var D=a.protocol+"//"+a.host+a.pathname+t+a.hash;return D}return c}catch(E){return console.warn("Erro ao processar URL:",
+c),c}}function w(){for(var b=document.getElementsByTagName("a"),c=0;c<b.length;c++){var a=b[c];if(a.href){var e=y(a,a.href);a.href!==e&&(a.href=e)}}b=document.getElementsByTagName("iframe");for(c=0;c<b.length;c++)if(a=b[c],!z.has(a)&&(e=a.getAttribute("data-src")||a.src))e=y(a,e),a.hasAttribute("data-src")?a.getAttribute("data-src")!==e&&a.setAttribute("data-src",e):a.src!==e&&(a.src=e),z.add(a)}var f="index",g=x(f);g||(g=localStorage.getItem(f));g&&g!==""||(g=google_tag_manager["rm"]["255028718"](6));var d=3456E4;
+r(f,g,d);localStorage.setItem(f,g);sessionStorage.setItem(f,g);f="entry_date";(d=x(f))||(d=localStorage.getItem(f));if(!d||d===""){d=(new Date).getTime().toString();var l=3456E4;r(f,d,l);localStorage.setItem(f,d);sessionStorage.setItem(f,d)}l=["fbclid","gclid"];f=!1;for(d=0;d<l.length;d++){var n=l[d];if(p(n)){f=!0;break}}d=p("utm_source");l=p("utm_medium");n=p("utm_campaign");var A=p("utm_content"),B=p("utm_term");d&&d.toLowerCase()!=="organico"&&(f||d)&&(d&&r("cookieUtmSource",d,63072E3),l&&r("cookieUtmMedium",
+l,63072E3),n&&r("cookieUtmCampaign",n,63072E3),A&&r("cookieUtmContent",A,63072E3),B&&r("cookieUtmTerm",B,63072E3));l=["utm_source","utm_medium","utm_campaign","utm_content","utm_term"];f={};for(d=0;d<l.length;d++)n=l[d],f[n]=n==="utm_source"?p(n)||(document.referrer?p(n,document.referrer)||C():"direto"):p(n)||p(n,document.referrer)||"";var v=[g];g=window.location.search?window.location.search.substring(1):"";var k={};if(g.length>0)for(g=g.split("\x26"),d=0;d<g.length;d++)l=g[d].split("\x3d"),l.length===
+2&&(k[decodeURIComponent(l[0])]=decodeURIComponent(l[1]));g=!1;for(var m in f)f.hasOwnProperty(m)&&!k.hasOwnProperty(m)&&f[m]!==""&&(k[m]=f[m],g=!0);!k.hasOwnProperty("sck")&&v.length>0&&(k.sck=v.join("|"),g=!0);if(g){g="?";f=!0;for(m in k)k.hasOwnProperty(m)&&(f||(g+="\x26"),g+=encodeURIComponent(m)+"\x3d"+encodeURIComponent(k[m]),f=!1);m=window.location.protocol+"//"+window.location.host+window.location.pathname+g+window.location.hash;window.history.replaceState(null,null,m)}var z=new WeakSet;w();
+typeof MutationObserver!=="undefined"?(m=new MutationObserver(function(b){for(var c=!1,a=0;a<b.length;a++)if(b[a].addedNodes&&b[a].addedNodes.length>0){c=!0;break}c&&w()}),m.observe(document.body||document.documentElement,{childList:!0,subtree:!0})):setInterval(w,3E3);document.addEventListener&&document.addEventListener("click",function(b){setTimeout(w,10)},!0)})();</script></body></html>
